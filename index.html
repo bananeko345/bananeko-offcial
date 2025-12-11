@@ -6,34 +6,66 @@
   <style>
     body {
       margin: 0;
-      padding: 20px;
+      padding: 0;
       font-family: Arial, sans-serif;
 
-      /* ← ここが背景画像！ */
+      /* 背景画像 */
       background: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/20251211-1825_351cdaa0c682ed5b47b5ee0c7d1a8be1.png") 
                   no-repeat center center fixed;
       background-size: cover;
 
+      /* 全体を中央に配置 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
       color: white;
-      text-shadow: 2px 2px 4px #000;
+    }
+
+    /* 文字を読みやすくするために背景ぼかしボックス */
+    .box {
+      background: rgba(0, 0, 0, 0.4); /* 半透明の黒 */
+      padding: 30px 40px;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+    }
+
+    h1 {
+      font-size: 50px;
+      margin-bottom: 20px;
+      text-shadow: 3px 3px 8px #000;
+      font-weight: 900;
+    }
+
+    p {
+      font-size: 22px;
+      text-shadow: 2px 2px 6px #000;
     }
 
     a {
       color: #ffea00;
-      font-size: 20px;
-      text-shadow: 2px 2px 4px #000;
+      font-size: 24px;
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 2px 2px 6px #000;
+    }
+
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
-  <h1>bananekoサーバー 公式サイト</h1>
-  <p>ようこそ！現在テストサイトです！</p>
+  <div class="box">
+    <h1>banasabaサーバー 公式サイト</h1>
+    <p>ようこそ！banasaba鯖です！</p>
 
-  <p>
-    <a href="https://discord.gg/8PdTwysuN" target="_blank">
-      🎮 Discordサーバーに参加する
-    </a>
-  </p>
+    <p>
+      <a href="https://discord.gg/8PdTwysuN" target="_blank">
+        🎮 Discordサーバーに参加する
+      </a>
+    </p>
+  </div>
 </body>
 </html>
-
