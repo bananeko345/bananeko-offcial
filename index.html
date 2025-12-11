@@ -6,66 +6,65 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-
-      /* 背景画像 */
-      background: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/20251211-1825_351cdaa0c682ed5b47b5ee0c7d1a8be1.png") 
-                  no-repeat center center fixed;
+      padding: 20px;
+      background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/20251211-1825_351cdaa0c682ed5b47b5ee0c7d1a8be1.png");
       background-size: cover;
-
-      /* 全体を中央に配置 */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
+      background-position: center;
       color: white;
+      text-shadow: 0 0 5px black;
+      font-family: Arial, sans-serif;
     }
 
-    /* 文字を読みやすくするために背景ぼかしボックス */
-    .box {
-      background: rgba(0, 0, 0, 0.4); /* 半透明の黒 */
-      padding: 30px 40px;
-      border-radius: 20px;
-      backdrop-filter: blur(5px);
+    /* ボタン */
+    .toggle-btn {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      width: 260px;
+      border: 2px solid white;
+      margin-top: 20px;
     }
 
-    h1 {
-      font-size: 50px;
-      margin-bottom: 20px;
-      text-shadow: 3px 3px 8px #000;
-      font-weight: 900;
-    }
-
-    p {
-      font-size: 22px;
-      text-shadow: 2px 2px 6px #000;
-    }
-
-    a {
-      color: #ffea00;
-      font-size: 24px;
-      text-decoration: none;
-      font-weight: bold;
-      text-shadow: 2px 2px 6px #000;
-    }
-
-    a:hover {
-      text-decoration: underline;
+    /* 中身（最初は隠す） */
+    .content {
+      display: none;
+      margin-top: 10px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 10px;
+      width: 260px;
     }
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1>banasabaサーバー 公式サイト</h1>
-    <p>ようこそ！banasaba鯖です！</p>
+  <h1>bananekoサーバー 公式サイト</h1>
+  <p>ようこそ！現在テストサイトです！</p>
 
+  <p>
+    <a href="https://discord.gg/8PdTwysuN" target="_blank" style="color: yellow;">
+      Discordサーバーはこちら！
+    </a>
+  </p>
+
+  <!-- ▼ 押したら開くメニュー ▼ -->
+  <div class="toggle-btn" onclick="toggleText()">
+    📘 Bananekoサーバーとは？
+  </div>
+
+  <div class="content" id="infoBox">
     <p>
-      <a href="https://discord.gg/8PdTwysuN" target="_blank">
-        🎮 Discordサーバーに参加する
-      </a>
+      Bananekoサーバーは、みんなで遊べる楽しいマイクラサーバーです！  
+      サバイバル・ミニゲーム・イベントなどを楽しめるよ！
     </p>
   </div>
+
+  <script>
+    function toggleText() {
+      const box = document.getElementById("infoBox");
+      box.style.display = (box.style.display === "block") ? "none" : "block";
+    }
+  </script>
+
 </body>
 </html>
