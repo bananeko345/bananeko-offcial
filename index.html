@@ -6,14 +6,26 @@
   <style>
     body {
       margin: 0;
-      padding: 20px;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-shadow: 0 0 5px black;
+      text-align: center;
+    }
+
+    .top-section {
+      padding: 40px 20px;
       background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/20251211-1825_351cdaa0c682ed5b47b5ee0c7d1a8be1.png");
       background-size: cover;
       background-position: center;
-      color: white;
-      text-shadow: 0 0 5px black;
-      font-family: Arial, sans-serif;
-      text-align: center;
+    }
+
+    .bottom-section {
+      padding: 100px 20px;
+      background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/minecraft.jpeg");
+      background-size: cover;
+      background-position: center;
+      min-height: 300px;
     }
 
     .center-box {
@@ -43,28 +55,31 @@
 </head>
 <body>
 
-  <div class="center-box">
-    <h1>banasabaサーバー 公式サイト</h1>
-    <p>banasaba鯖へようこそ！</p>
+  <div class="top-section">
+    <div class="center-box">
+      <h1>banasabaサーバー 公式サイト</h1>
+      <p>banasaba鯖へようこそ！</p>
 
-    <p>
-      <a href="https://discord.gg/8PdTwysuN" target="_blank" style="color: yellow;">
-        Discordサーバーはこちら！
-      </a>
-    </p>
-
-    <div class="toggle-btn" onclick="toggleText()">
-      📘 banasabaサーバーとは？
-    </div>
-
-    <div class="content" id="infoBox">
       <p>
-        banasabaサーバーは、みんなで遊べる楽しいマイクラサーバーです！<br>
-        サバイバル、イベント、建築、いろんな遊びができます！
+        <a href="https://discord.gg/8PdTwysuN" target="_blank" style="color: yellow;">
+          Discordサーバーはこちら！
+        </a>
       </p>
-    </div>
 
+      <div class="toggle-btn" onclick="toggleText()">
+        📘 banasabaサーバーとは？
+      </div>
+
+      <div class="content" id="infoBox">
+        <p>
+          banasabaサーバーは、みんなで遊べる楽しいマイクラサーバーです！<br>
+          サバイバル、イベント、建築、いろんな遊びができます！
+        </p>
+      </div>
+    </div>
   </div>
+
+  <div class="bottom-section"></div>
 
   <script>
     function toggleText() {
