@@ -13,16 +13,14 @@
       color: white;
       text-shadow: 0 0 5px black;
       font-family: Arial, sans-serif;
-      text-align: center; /* ← 追加：文字を中央に */
+      text-align: center;
     }
 
-    /* コンテンツ中央配置用 */
     .center-box {
       display: inline-block;
-      text-align: left; /* 中の文字は左寄せのまま */
+      text-align: left;
     }
 
-    /* ボタン */
     .toggle-btn {
       background: rgba(0, 0, 0, 0.6);
       padding: 10px 20px;
@@ -33,7 +31,6 @@
       margin-top: 20px;
     }
 
-    /* 中身（最初は隠す） */
     .content {
       display: none;
       margin-top: 10px;
@@ -56,7 +53,6 @@
       </a>
     </p>
 
-    <!-- ▼ 押したら開くメニュー ▼ -->
     <div class="toggle-btn" onclick="toggleText()">
       📘 banasabaサーバーとは？
     </div>
@@ -64,3 +60,18 @@
     <div class="content" id="infoBox">
       <p>
         banasabaサーバーは、みんなで遊べる楽しいマイクラサーバーです！<br>
+        サバイバル、イベント、建築、いろんな遊びができます！
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    function toggleText() {
+      const box = document.getElementById("infoBox");
+      box.style.display = box.style.display === "none" ? "block" : "none";
+    }
+  </script>
+
+</body>
+</html>
