@@ -77,7 +77,8 @@
         </a>
       </p>
 
-      <div class="toggle-btn fade" onclick="toggleText()">
+      <!-- 既存の「banasabaサーバーとは？」ボタン -->
+      <div class="toggle-btn fade" onclick="toggleText('infoBox')">
         📘 banasabaサーバーとは？
       </div>
 
@@ -87,14 +88,30 @@
           サバイバル、イベント、建築、いろんな遊びができます！
         </p>
       </div>
+
+      <!-- 新規追加：鯖メンバー紹介 -->
+      <div class="toggle-btn fade" onclick="toggleText('staffBox')">
+        👑 鯖メンバー紹介
+      </div>
+
+      <div class="content" id="staffBox">
+        <p>
+          鯖主: bananeko345<br>
+          Admin: ycha03, mogu_kun, ryuto_desu<br>
+          Moderator: shin_001, okuwagata<br>
+          Builder: komaneko1011, shotaleaf0330<br>
+          Developer: aruru_563
+        </p>
+      </div>
+
     </div>
   </div>
 
   <div class="bottom-section fade"></div>
 
   <script>
-    function toggleText() {
-      const box = document.getElementById("infoBox");
+    function toggleText(id) {
+      const box = document.getElementById(id);
       box.style.display = (box.style.display === "none" || box.style.display === "") ? "block" : "none";
     }
   </script>
