@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>お問い合わせ - banasaba server</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  padding: 20px;
+  background: #f2f2f2;
+}
+
+.box {
+  background: white;
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 500px;
+  margin: 0 auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.send-btn {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  background: orange;
+  border: none;
+  border-radius: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.send-btn:hover {
+  background: #ffca4b;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <h1>お問い合わせ</h1>
+
+  <form action="mailto:あなたのメールアドレスを書く" method="POST" enctype="text/plain">
+      <label>名前</label>
+      <input type="text" name="name" required>
+
+      <label>内容</label>
+      <textarea name="message" rows="6" required></textarea>
+
+      <button type="submit" class="send-btn">送信する</button>
+  </form>
+
+</div>
+
+</body>
+</html>
