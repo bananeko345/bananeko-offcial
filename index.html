@@ -2,135 +2,145 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>banasaba鯖 公式サイト</title>
-  <!-- Google Fonts -->
+  <title>banasaba server</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
       font-family: 'Roboto Mono', monospace;
-      color: #fff;
-      text-shadow: 0 0 8px #000;
-      text-align: center;
-      background-color: #111;
+      color: white;
+      overflow-x: hidden;
     }
 
+    /* フェードインアニメーション */
     @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
+      0% { opacity: 0; transform: translateY(20px);}
+      100% { opacity: 1; transform: translateY(0);}
     }
+    .fade { animation: fadeIn 1s ease-out; }
 
-    .fade {
-      animation: fadeIn 1s ease-out;
-    }
-
-    .top-section {
-      padding: 40px 20px;
-      background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/20251211-1825_351cdaa0c682ed5b47b5ee0c7d1a8be1.png");
+    /* 上下背景のパララックス */
+    .section {
+      width: 100%;
+      height: 100vh;
       background-size: cover;
       background-position: center;
+      position: relative;
+      overflow: hidden;
+      transition: background-position 0.3s;
     }
 
-    .bottom-section {
-      padding: 100px 20px;
-      background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png");
-      background-size: cover;
-      background-position: center;
-      min-height: 300px;
-    }
-
-    .center-box {
-      display: inline-block;
-      text-align: center;
-    }
-
-    h1 {
+    /* 左上ロゴ */
+    .top-left {
+      position: fixed;
+      top: 20px;
+      left: 20px;
       font-family: 'Orbitron', sans-serif;
-      font-size: 2.8em;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 1.1em;
-      line-height: 1.6em;
-    }
-
-    .toggle-btn {
-      background: rgba(255, 255, 255, 0.1);
-      color: #ffeb3b;
+      font-size: 1.8em;
       font-weight: bold;
-      font-family: 'Orbitron', sans-serif;
-      padding: 12px 25px;
-      border-radius: 12px;
-      cursor: pointer;
-      width: 280px;
+      z-index: 10;
+    }
+
+    /* 右上ナビ */
+    .top-right {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+    }
+
+    .nav-item {
+      display: inline-block;
+      margin-left: 20px;
+      padding: 8px 15px;
       border: 2px solid #ffeb3b;
-      margin: 15px 0;
+      border-radius: 8px;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      color: #ffeb3b;
+      cursor: pointer;
       transition: 0.3s;
     }
 
-    .toggle-btn:hover {
-      background: rgba(255, 235, 59, 0.2);
+    .nav-item:hover {
+      background: rgba(255,235,59,0.2);
+      transform: scale(1.1);
+    }
+
+    /* 左下エリア */
+    .bottom-left {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      text-align: left;
+      animation: fadeIn 1.5s ease-out;
+    }
+
+    .bottom-left h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2em;
+      margin: 0;
+    }
+
+    .bottom-left p {
+      margin: 10px 0;
+      font-size: 1.2em;
+    }
+
+    .rule-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 2px solid #ffeb3b;
+      border-radius: 10px;
+      color: #ffeb3b;
+      background: rgba(0,0,0,0.3);
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .rule-btn:hover {
+      background: rgba(255,235,59,0.2);
       transform: scale(1.05);
     }
-
-    .content {
-      display: none;
-      margin: 10px auto;
-      background: rgba(0, 0, 0, 0.7);
-      padding: 15px 20px;
-      border-radius: 12px;
-      width: 300px;
-      font-family: 'Roboto Mono', monospace;
-    }
-
-    a {
-      color: #ffeb3b;
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
   </style>
 </head>
 <body>
 
-  <div class="top-section fade">
-    <div class="center-box fade">
-      <h1 class="fade">banasabaサーバー 公式サイト</h1>
-      <p class="fade">banasaba鯖へようこそ！</p>
+  <!-- 左上ロゴ -->
+  <div class="top-left fade">banasaba server</div>
 
-      <p class="fade">
-        <a href="https://discord.gg/8PdTwysuN" target="_blank">
-          Discordサーバーはこちら！
-        </a>
-      </p>
+  <!-- 右上ナビ -->
+  <div class="top-right fade">
+    <div class="nav-item">ホーム</div>
+    <div class="nav-item">ルール</div>
+    <div class="nav-item">サーバー紹介</div>
+    <div class="nav-item">お問い合わせ</div>
+  </div>
 
-      <!-- 「banasabaサーバーとは？」ボタン -->
-      <div class="toggle-btn fade" onclick="toggleText('infoBox')">
-        📘 banasabaサーバーとは？
-      </div>
-
-      <div class="content" id="infoBox">
-        <p>
-          banasabaサーバーは、みんなで遊べる楽しいマイクラサーバーです！<br>
-          サバイバル、イベント、建築、いろんな遊びができます！
-        </p>
-      </div>
-
+  <!-- 上背景 -->
+  <div class="section" id="section1" style="background-image: url('https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/20251211-1825_351cdaa0c682ed5b47b5ee0c7d1a8be1.png');">
+    <div class="bottom-left">
+      <h1>banasaba server</h1>
+      <p>毎日楽しくやろう。</p>
+      <div class="rule-btn">ルールを見る</div>
     </div>
   </div>
 
-  <div class="bottom-section fade"></div>
+  <!-- 下背景 -->
+  <div class="section" id="section2" style="background-image: url('https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png');">
+    <!-- ここに文字やコンテンツも置ける -->
+  </div>
 
   <script>
-    function toggleText(id) {
-      const box = document.getElementById(id);
-      box.style.display = (box.style.display === "none" || box.style.display === "") ? "block" : "none";
-    }
+    // パララックス効果
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      document.getElementById('section1').style.backgroundPositionY = -(scrolled * 0.3) + 'px';
+      document.getElementById('section2').style.backgroundPositionY = -(scrolled * 0.1) + 'px';
+    });
   </script>
 
 </body>
