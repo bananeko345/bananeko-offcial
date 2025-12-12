@@ -3,23 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <title>banasaba鯖 公式サイト</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      text-shadow: 0 0 5px black;
+      font-family: 'Roboto Mono', monospace;
+      color: #fff;
+      text-shadow: 0 0 8px #000;
       text-align: center;
+      background-color: #111;
     }
 
-    /* ▼ ふわっと出るアニメーション */
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
 
-    /* アニメーションを適用するクラス */
     .fade {
       animation: fadeIn 1s ease-out;
     }
@@ -41,27 +42,58 @@
 
     .center-box {
       display: inline-block;
-      text-align: left;
+      text-align: center;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.6em;
     }
 
     .toggle-btn {
-      background: rgba(0, 0, 0, 0.6);
-      padding: 10px 20px;
-      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffeb3b;
+      font-weight: bold;
+      font-family: 'Orbitron', sans-serif;
+      padding: 12px 25px;
+      border-radius: 12px;
       cursor: pointer;
-      width: 260px;
-      border: 2px solid white;
-      margin-top: 20px;
+      width: 280px;
+      border: 2px solid #ffeb3b;
+      margin: 15px 0;
+      transition: 0.3s;
+    }
+
+    .toggle-btn:hover {
+      background: rgba(255, 235, 59, 0.2);
+      transform: scale(1.05);
     }
 
     .content {
       display: none;
-      margin-top: 10px;
-      background: rgba(0, 0, 0, 0.5);
-      padding: 15px;
-      border-radius: 10px;
-      width: 260px;
+      margin: 10px auto;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 15px 20px;
+      border-radius: 12px;
+      width: 300px;
+      font-family: 'Roboto Mono', monospace;
     }
+
+    a {
+      color: #ffeb3b;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
   </style>
 </head>
 <body>
@@ -72,12 +104,12 @@
       <p class="fade">banasaba鯖へようこそ！</p>
 
       <p class="fade">
-        <a href="https://discord.gg/8PdTwysuN" target="_blank" style="color: yellow;">
+        <a href="https://discord.gg/8PdTwysuN" target="_blank">
           Discordサーバーはこちら！
         </a>
       </p>
 
-      <!-- 既存の「banasabaサーバーとは？」ボタン -->
+      <!-- 「banasabaサーバーとは？」ボタン -->
       <div class="toggle-btn fade" onclick="toggleText('infoBox')">
         📘 banasabaサーバーとは？
       </div>
@@ -86,21 +118,6 @@
         <p>
           banasabaサーバーは、みんなで遊べる楽しいマイクラサーバーです！<br>
           サバイバル、イベント、建築、いろんな遊びができます！
-        </p>
-      </div>
-
-      <!-- 新規追加：鯖メンバー紹介 -->
-      <div class="toggle-btn fade" onclick="toggleText('staffBox')">
-        👑 鯖メンバー紹介
-      </div>
-
-      <div class="content" id="staffBox">
-        <p>
-          鯖主: bananeko345<br>
-          Admin: ycha03, mogu_kun, ryuto_desu<br>
-          Moderator: shin_001, okuwagata<br>
-          Builder: komaneko1011, shotaleaf0330<br>
-          Developer: aruru_563
         </p>
       </div>
 
