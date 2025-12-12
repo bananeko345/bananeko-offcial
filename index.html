@@ -1,102 +1,124 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ホーム画面</title>
+  <meta charset="UTF-8">
+  <title>banasaba server</title>
 
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            overflow: hidden;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
 
-        /* 上の背景 */
-        .bg1 {
-            position: absolute;
-            width: 100%;
-            height: 50%;
-            top: 0;
-            background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png");
-            background-size: cover;
-            background-position: center;
-            animation: slide1 5s infinite alternate;
-        }
+    /* ▼ アニメーション */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .fade { animation: fadeIn 1s ease-out; }
 
-        /* 下の背景 */
-        .bg2 {
-            position: absolute;
-            width: 100%;
-            height: 50%;
-            bottom: 0;
-            background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png");
-            background-size: cover;
-            background-position: center;
-            animation: slide2 6s infinite alternate;
-        }
+    /* ▼ ナビバー */
+    .navbar {
+      width: 100%;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.6);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
 
-        /* アニメーション */
-        @keyframes slide1 {
-            0% { background-position: center top; }
-            100% { background-position: center bottom; }
-        }
+    .nav-title {
+      font-size: 25px;
+      font-weight: bold;
+    }
 
-        @keyframes slide2 {
-            0% { background-position: center bottom; }
-            100% { background-position: center top; }
-        }
+    .nav-links a {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
 
-        /* タイトル */
-        h1 {
-            position: relative;
-            margin-top: 40px;
-            font-size: 40px;
-            color: white;
-            z-index: 1;
-            text-shadow: 2px 2px 10px black;
-        }
+    /* ▼ セクション（背景） */
+    .section {
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-shadow: 0 0 5px black;
+    }
 
-        /* ボタン共通 */
-        button {
-            position: relative;
-            padding: 15px 30px;
-            font-size: 20px;
-            margin: 10px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            z-index: 1;
-        }
+    .section1 {
+      background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/20251211-1825_351cdaa0c682ed5b47b5ee0c7d1a8be1.png");
+    }
+    .section2 {
+      background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png");
+    }
 
-        .rule-btn {
-            background-color: #4CAF50;
-            color: white;
-        }
+    /* ▼ ボタン */
+    .rule-btn, .contact-btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: orange;
+      border: none;
+      border-radius: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-        .contact-btn {
-            background-color: #2196F3;
-            color: white;
-        }
+    .rule-btn:hover, .contact-btn:hover {
+      background: #ffca4b;
+    }
 
-    </style>
+  </style>
 </head>
 <body>
 
-    <div class="bg1"></div>
-    <div class="bg2"></div>
+  <!-- ▼ ナビバー -->
+  <div class="navbar fade">
+    <div class="nav-title">banasaba server</div>
+    <div class="nav-links">
+      <a href="index.html">ホーム</a>
+      <a href="Rules.html">ルール</a>
+      <a href="#about">サーバー紹介</a>
+      <a href="#contact">お問い合わせ</a>
+    </div>
+  </div>
 
-    <h1>ホームページへようこそ！</h1>
+  <!-- ▼ 1つ目の背景 -->
+  <div class="section section1 fade">
+    <h1 style="font-size: 50px;">banasaba server</h1>
+    <h2>毎日楽しくやろう。</h2>
 
-    <!-- ルールページへ -->
-    <button class="rule-btn" onclick="location.href='Rules.html'">ルールを見る</button>
-
-    <!-- メールで問い合わせ -->
-    <button class="contact-btn" onclick="location.href='mailto:bananeko345@gmail.com'">
-        お問い合わせ
+    <!-- ルールへ飛ぶ -->
+    <button class="rule-btn" onclick="location.href='Rules.html'">
+      ルールを見る
     </button>
+
+  </div>
+
+  <!-- ▼ 2つ目の背景（サーバー紹介） -->
+  <div class="section section2 fade" id="about">
+    <h1>サーバー紹介</h1>
+    <p>みんなで遊べるサーバーだよ！</p>
+
+    <!-- ▼ お問い合わせ（ここからメール送れる） -->
+    <button class="contact-btn" id="contact" onclick="location.href='mailto:bananeko345@gmail.com'">
+      お問い合わせ
+    </button>
+
+  </div>
 
 </body>
 </html>
