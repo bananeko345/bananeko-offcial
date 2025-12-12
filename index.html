@@ -34,9 +34,31 @@
       z-index: 10;
     }
 
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
     .nav-title {
       font-size: 25px;
       font-weight: bold;
+    }
+
+    /* ▼ Discordボタン */
+    .discord-btn {
+      padding: 8px 15px;
+      background: #5865F2;
+      border-radius: 8px;
+      color: white;
+      font-size: 16px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    .discord-btn:hover {
+      background: #6d76ff;
     }
 
     .nav-links a {
@@ -88,15 +110,25 @@
 
   <!-- ▼ ナビバー -->
   <div class="navbar fade">
-    <div class="nav-title">banasaba server</div>
+
+    <!-- 左側（タイトル＋Discordボタン） -->
+    <div class="nav-left">
+      <div class="nav-title">banasaba server</div>
+
+      <!-- ★ Discordボタン追加！ ★ -->
+      <a href="https://discord.gg/Mz8vqjchQs" target="_blank" class="discord-btn">
+        Discordに参加
+      </a>
+    </div>
+
+    <!-- 右側（リンク） -->
     <div class="nav-links">
       <a href="index.html">ホーム</a>
       <a href="Rules.html">ルール</a>
       <a href="#about">サーバー紹介</a>
-
-      <!-- クリックしたらメール送信画面へ -->
       <a href="mailto:bananeko345@gmail.com">お問い合わせ</a>
     </div>
+
   </div>
 
   <!-- ▼ 1つ目の背景 -->
@@ -113,7 +145,6 @@
   <div class="section section2 fade" id="about">
     <h1>サーバー紹介</h1>
     <p>みんなで遊べるサーバーだよ！</p>
-    <!-- ★ 下のお問い合わせボタンは削除済み！ ★ -->
   </div>
 
 </body>
