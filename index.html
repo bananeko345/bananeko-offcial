@@ -1,147 +1,182 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>banasaba server</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto+Mono&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Roboto Mono', monospace;
-      color: white;
-      overflow-x: hidden;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>banasaba server</title>
 
-    /* フェードインアニメーション */
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px);}
-      100% { opacity: 1; transform: translateY(0);}
-    }
-    .fade { animation: fadeIn 1s ease-out; }
+<style>
+/* 全体の背景 */
+body {
+    margin: 0;
+    font-family: "Arial";
+    animation: fadeIn 1s;
+}
 
-    /* 上下背景のパララックス */
-    .section {
-      width: 100%;
-      height: 100vh;
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      overflow: hidden;
-      transition: background-position 0.3s;
-    }
+/* 背景1 */
+.bg1 {
+    background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 60vh;
+}
 
-    /* 左上ロゴ */
-    .top-left {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      font-family: 'Orbitron', sans-serif;
-      font-size: 1.8em;
-      font-weight: bold;
-      z-index: 10;
-    }
+/* 背景2（下の背景） */
+.bg2 {
+    background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/bottom-bg.png");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 40vh;
+}
 
-    /* 右上ナビ */
-    .top-right {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 10;
-    }
+/* 上の文字 */
+.header-title {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    text-shadow: 3px 3px 5px black;
+    animation: slideDown 0.8s;
+}
 
-    .nav-item {
-      display: inline-block;
-      margin-left: 20px;
-      padding: 8px 15px;
-      border: 2px solid #ffeb3b;
-      border-radius: 8px;
-      font-family: 'Orbitron', sans-serif;
-      font-weight: bold;
-      color: #ffeb3b;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+/* メニュー */
+.menu {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+}
 
-    .nav-item:hover {
-      background: rgba(255,235,59,0.2);
-      transform: scale(1.1);
-    }
+.menu button {
+    margin-left: 10px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
 
-    /* 左下エリア */
-    .bottom-left {
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      text-align: left;
-      animation: fadeIn 1.5s ease-out;
-    }
+.menu button:hover {
+    background: #d0d0d0;
+}
 
-    .bottom-left h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2em;
-      margin: 0;
-    }
+/* メイン文字 */
+.main-text {
+    position: absolute;
+    top: 120px;
+    left: 20px;
+    color: white;
+    font-size: 22px;
+    font-weight: bold;
+    text-shadow: 3px 3px 5px black;
+    animation: fadeIn 1.2s;
+}
 
-    .bottom-left p {
-      margin: 10px 0;
-      font-size: 1.2em;
-    }
+/* ルールボタン */
+.rule-btn {
+    position: absolute;
+    bottom: 120px;
+    left: 20px;
+    padding: 12px 20px;
+    background: orange;
+    color: black;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+    animation: pop 0.6s infinite alternate;
+}
 
-    .rule-btn {
-      display: inline-block;
-      padding: 10px 20px;
-      border: 2px solid #ffeb3b;
-      border-radius: 10px;
-      color: #ffeb3b;
-      background: rgba(0,0,0,0.3);
-      font-family: 'Orbitron', sans-serif;
-      font-weight: bold;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+/* ページ切り替え場所 */
+.page {
+    display: none;
+    padding: 20px;
+    background: white;
+}
 
-    .rule-btn:hover {
-      background: rgba(255,235,59,0.2);
-      transform: scale(1.05);
-    }
-  </style>
+/* ホームだけ最初表示 */
+#home {
+    display: block;
+}
+
+/* アニメーション */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideDown {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pop {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+</style>
+
 </head>
 <body>
 
-  <!-- 左上ロゴ -->
-  <div class="top-left fade">banasaba server</div>
+<div class="bg1"></div>
+<div class="bg2"></div>
 
-  <!-- 右上ナビ -->
-  <div class="top-right fade">
-    <div class="nav-item">ホーム</div>
-    <div class="nav-item">ルール</div>
-    <div class="nav-item">サーバー紹介</div>
-    <div class="nav-item">お問い合わせ</div>
-  </div>
+<!-- 左上タイトル -->
+<div class="header-title">banasaba server</div>
 
-  <!-- 上背景 -->
-  <div class="section" id="section1" style="background-image: url('https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/20251211-1825_351cdaa0c682ed5b47b5ee0c7d1a8be1.png');">
-    <div class="bottom-left">
-      <h1>banasaba server</h1>
-      <p>毎日楽しくやろう。</p>
-      <div class="rule-btn">ルールを見る</div>
-    </div>
-  </div>
+<!-- メニュー -->
+<div class="menu">
+    <button onclick="showPage('home')">ホーム</button>
+    <button onclick="showPage('rule')">ルール</button>
+    <button onclick="showPage('info')">サーバー紹介</button>
+    <button onclick="showPage('contact')">お問い合わせ</button>
+</div>
 
-  <!-- 下背景 -->
-  <div class="section" id="section2" style="background-image: url('https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png');">
-    <!-- ここに文字やコンテンツも置ける -->
-  </div>
+<!-- メイン文字 -->
+<div class="main-text">毎日楽しくやろう。</div>
 
-  <script>
-    // パララックス効果
-    window.addEventListener('scroll', () => {
-      const scrolled = window.scrollY;
-      document.getElementById('section1').style.backgroundPositionY = -(scrolled * 0.3) + 'px';
-      document.getElementById('section2').style.backgroundPositionY = -(scrolled * 0.1) + 'px';
-    });
-  </script>
+<!-- ルールを見るボタン -->
+<button class="rule-btn" onclick="showPage('rule')">ルールを見る</button>
+
+<!-- 各ページ内容 -->
+<div id="home" class="page">
+    <h2>ホーム</h2>
+    <p>ここにホームの説明を書けるよ！</p>
+</div>
+
+<div id="rule" class="page">
+    <h2>ルール</h2>
+    <ul>
+        <li>荒らし禁止</li>
+        <li>暴言禁止</li>
+        <li>チート禁止</li>
+        <li>仲良くあそんでね！</li>
+    </ul>
+</div>
+
+<div id="info" class="page">
+    <h2>サーバー紹介</h2>
+    <p>ここにサーバー紹介を書けるよ。</p>
+</div>
+
+<div id="contact" class="page">
+    <h2>お問い合わせ</h2>
+    <p>ここに問い合わせ内容を書けるよ。</p>
+</div>
+
+<script>
+function showPage(pageId) {
+    document.querySelectorAll(".page").forEach(p => p.style.display = "none");
+    document.getElementById(pageId).style.display = "block";
+    window.scrollTo(0, 0);
+}
+</script>
 
 </body>
 </html>
