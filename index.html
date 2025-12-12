@@ -1,182 +1,117 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html>
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>banasaba server</title>
+  <meta charset="UTF-8">
+  <title>banasaba server</title>
 
-<style>
-/* 全体の背景 */
-body {
-    margin: 0;
-    font-family: "Arial";
-    animation: fadeIn 1s;
-}
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      overflow-x: hidden;
+    }
 
-/* 背景1 */
-.bg1 {
-    background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png");
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 60vh;
-}
+    /* ▼ アニメーション */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .fade { animation: fadeIn 1s ease-out; }
 
-/* 背景2（下の背景） */
-.bg2 {
-    background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/bottom-bg.png");
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 40vh;
-}
+    /* ▼ ナビバー */
+    .navbar {
+      width: 100%;
+      padding: 15px 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,0,0,0.6);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 10;
+    }
 
-/* 上の文字 */
-.header-title {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    color: white;
-    font-size: 28px;
-    font-weight: bold;
-    text-shadow: 3px 3px 5px black;
-    animation: slideDown 0.8s;
-}
+    .nav-title {
+      font-size: 25px;
+      font-weight: bold;
+    }
 
-/* メニュー */
-.menu {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-}
+    .nav-links a {
+      margin-left: 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
 
-.menu button {
-    margin-left: 10px;
-    padding: 10px 18px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: 0.3s;
-}
+    /* ▼ セクション（背景） */
+    .section {
+      height: 100vh;
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-shadow: 0 0 5px black;
+    }
 
-.menu button:hover {
-    background: #d0d0d0;
-}
+    .section1 {
+      background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/20251211-1825_351cdaa0c682ed5b47b5ee0c7d1a8be1.png");
+    }
+    .section2 {
+      background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png");
+    }
 
-/* メイン文字 */
-.main-text {
-    position: absolute;
-    top: 120px;
-    left: 20px;
-    color: white;
-    font-size: 22px;
-    font-weight: bold;
-    text-shadow: 3px 3px 5px black;
-    animation: fadeIn 1.2s;
-}
+    /* ▼ ボタン */
+    .rule-btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: orange;
+      border: none;
+      border-radius: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
 
-/* ルールボタン */
-.rule-btn {
-    position: absolute;
-    bottom: 120px;
-    left: 20px;
-    padding: 12px 20px;
-    background: orange;
-    color: black;
-    border-radius: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    border: none;
-    font-weight: bold;
-    animation: pop 0.6s infinite alternate;
-}
+    .rule-btn:hover {
+      background: #ffca4b;
+    }
 
-/* ページ切り替え場所 */
-.page {
-    display: none;
-    padding: 20px;
-    background: white;
-}
-
-/* ホームだけ最初表示 */
-#home {
-    display: block;
-}
-
-/* アニメーション */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideDown {
-    from { transform: translateY(-20px); opacity: 0; }
-    to { transform: translateY(0); opacity: 1; }
-}
-
-@keyframes pop {
-    from { transform: scale(1); }
-    to { transform: scale(1.1); }
-}
-</style>
-
+  </style>
 </head>
 <body>
 
-<div class="bg1"></div>
-<div class="bg2"></div>
+  <!-- ▼ ナビバー -->
+  <div class="navbar fade">
+    <div class="nav-title">banasaba server</div>
+    <div class="nav-links">
+      <a href="index.html">ホーム</a>
+      <a href="rules.html">ルール</a>
+      <a href="#about">サーバー紹介</a>
+      <a href="#contact">お問い合わせ</a>
+    </div>
+  </div>
 
-<!-- 左上タイトル -->
-<div class="header-title">banasaba server</div>
+  <!-- ▼ 1つ目の背景 -->
+  <div class="section section1 fade">
+    <h1 style="font-size: 50px;">banasaba server</h1>
+    <h2>毎日楽しくやろう。</h2>
 
-<!-- メニュー -->
-<div class="menu">
-    <button onclick="showPage('home')">ホーム</button>
-    <button onclick="showPage('rule')">ルール</button>
-    <button onclick="showPage('info')">サーバー紹介</button>
-    <button onclick="showPage('contact')">お問い合わせ</button>
-</div>
+    <!-- ルールへ行くボタン（←押すと rules.html に行く） -->
+    <button class="rule-btn" onclick="location.href='rules.html'">
+      ルールを見る
+    </button>
+  </div>
 
-<!-- メイン文字 -->
-<div class="main-text">毎日楽しくやろう。</div>
-
-<!-- ルールを見るボタン -->
-<button class="rule-btn" onclick="showPage('rule')">ルールを見る</button>
-
-<!-- 各ページ内容 -->
-<div id="home" class="page">
-    <h2>ホーム</h2>
-    <p>ここにホームの説明を書けるよ！</p>
-</div>
-
-<div id="rule" class="page">
-    <h2>ルール</h2>
-    <ul>
-        <li>荒らし禁止</li>
-        <li>暴言禁止</li>
-        <li>チート禁止</li>
-        <li>仲良くあそんでね！</li>
-    </ul>
-</div>
-
-<div id="info" class="page">
-    <h2>サーバー紹介</h2>
-    <p>ここにサーバー紹介を書けるよ。</p>
-</div>
-
-<div id="contact" class="page">
-    <h2>お問い合わせ</h2>
-    <p>ここに問い合わせ内容を書けるよ。</p>
-</div>
-
-<script>
-function showPage(pageId) {
-    document.querySelectorAll(".page").forEach(p => p.style.display = "none");
-    document.getElementById(pageId).style.display = "block";
-    window.scrollTo(0, 0);
-}
-</script>
+  <!-- ▼ 2つ目の背景 -->
+  <div class="section section2 fade" id="about">
+    <h1>サーバー紹介</h1>
+    <p>みんなで遊べるサーバーだよ！</p>
+  </div>
 
 </body>
 </html>
