@@ -9,18 +9,30 @@
 body {
     font-family: Arial;
     margin: 0;
-    padding: 20px;
-    background: #f2f2f2;
+    padding: 0;
+    min-height: 100vh;
+
+    /* ▼ 背景画像（変更済み） */
+    background-image:
+      linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+      url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* ルールBOX */
+/* ▼ ルールBOX */
 .rule-box {
-    background: white;
-    padding: 20px;
+    background: rgba(255,255,255,0.95);
+    padding: 25px;
     border-radius: 15px;
     max-width: 600px;
-    margin: 0 auto;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    width: 90%;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.4);
     animation: fadeIn 0.9s;
 }
 
@@ -32,8 +44,9 @@ ul {
     font-size: 20px;
 }
 
+/* ▼ 戻るボタン */
 .back-btn {
-    margin-top: 20px;
+    margin-top: 25px;
     display: block;
     text-align: center;
     padding: 12px;
@@ -51,7 +64,7 @@ ul {
     background: #ffcd66;
 }
 
-/* アニメーション */
+/* ▼ アニメーション */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
@@ -72,7 +85,6 @@ ul {
         <li>みんなで仲良くあそぼう！</li>
     </ul>
 
-    <!-- ホームに戻るボタン -->
     <a class="back-btn" href="index.html">ホームに戻る</a>
 </div>
 
