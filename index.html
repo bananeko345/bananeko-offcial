@@ -91,7 +91,7 @@
       background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");
     }
 
-    /* ▼ 左側サーバー情報BOX */
+    /* ▼ 左下サーバー情報 */
     .server-info {
       position: absolute;
       left: 30px;
@@ -100,7 +100,7 @@
       padding: 15px 20px;
       border-radius: 15px;
       font-size: 18px;
-      min-width: 220px;
+      min-width: 230px;
     }
 
     /* ▼ ボタン */
@@ -145,6 +145,7 @@
         Discordに参加
       </a>
     </div>
+
     <div class="nav-links">
       <a href="index.html">ホーム</a>
       <a href="Rules.html">ルール</a>
@@ -162,10 +163,10 @@
       ルールを見る
     </button>
 
-    <!-- ★ 左側 サーバー状態＆人数 ★ -->
+    <!-- ★ サーバー状態＆人数 ★ -->
     <div class="server-info fade">
-      <div id="server-status">🕒 状態確認中...</div>
-      <div id="player-count">👥 人数確認中...</div>
+      <div id="server-status">確認中...</div>
+      <div id="player-count"></div>
     </div>
   </div>
 
@@ -189,7 +190,7 @@
     </a>
   </div>
 
-  <!-- ▼ サーバー状態・人数取得 -->
+  <!-- ▼ サーバー状態判定（黄色→緑） -->
   <script>
     const serverIP = "BANASABA.aternos.me";
 
@@ -200,19 +201,26 @@
         const players = document.getElementById("player-count");
 
         if (data.online) {
-          status.innerHTML = "🟢 サーバー：オンライン";
-          players.innerHTML =
-            `👥 人数：${data.players.online} / ${data.players.max}`;
+          if (data.players && data.players.online > 0) {
+            status.innerHTML = "🟢 サーバーはオンライン";
+            status.style.color = "#00ff66";
+            players.innerHTML = `参加人数：${data.players.online}人`;
+            players.style.color = "#00ff66";
+          } else {
+            status.innerHTML = "🟡 サーバーはオンライン";
+            status.style.color = "#ffeb3b";
+            players.innerHTML = "参加してる人：0人";
+            players.style.color = "#ffeb3b";
+          }
         } else {
-          status.innerHTML = "🔴 サーバー：オフライン";
-          players.innerHTML = "👥 人数：0";
+          status.innerHTML = "🔴 サーバーはオフライン";
+          status.style.color = "#ff5555";
+          players.innerHTML = "";
         }
       })
       .catch(() => {
         document.getElementById("server-status").innerHTML =
-          "⚠ 状態取得失敗";
-        document.getElementById("player-count").innerHTML =
-          "⚠ 人数取得失敗";
+          "⚠ 状態を取得できません";
       });
   </script>
 
