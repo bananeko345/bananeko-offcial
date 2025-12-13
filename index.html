@@ -91,7 +91,7 @@
       background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");
     }
 
-    /* ▼ 左下 サーバー情報BOX */
+    /* ▼ 左側サーバー情報BOX */
     .server-info {
       position: absolute;
       left: 30px;
@@ -101,17 +101,6 @@
       border-radius: 15px;
       font-size: 18px;
       min-width: 220px;
-    }
-
-    /* ▼ 右上 IPアドレス */
-    .server-ip {
-      position: absolute;
-      right: 30px;
-      top: 80px; /* 少し下に */
-      background: rgba(0,0,0,0.6);
-      padding: 12px 18px;
-      border-radius: 12px;
-      font-size: 18px;
     }
 
     /* ▼ ボタン */
@@ -173,17 +162,10 @@
       ルールを見る
     </button>
 
-    <!-- 左下 サーバー状態＆人数 -->
+    <!-- ★ 左側 サーバー状態＆人数 ★ -->
     <div class="server-info fade">
       <div id="server-status">🕒 状態確認中...</div>
       <div id="player-count">👥 人数確認中...</div>
-    </div>
-
-    <!-- 右上 IPアドレス -->
-    <div class="server-ip fade">
-      Java: BANASABA.aternos.me<br>
-      統合版: BANASABA.aternos.me<br>
-      ポート: 55396
     </div>
   </div>
 
@@ -217,8 +199,7 @@
         const status = document.getElementById("server-status");
         const players = document.getElementById("player-count");
 
-        // 誰も参加していない場合はオフライン（赤）、1人以上ならオンライン（緑）
-        if (data.online && data.players && data.players.online > 0) {
+        if (data.online) {
           status.innerHTML = "🟢 サーバー：オンライン";
           players.innerHTML =
             `👥 人数：${data.players.online} / ${data.players.max}`;
