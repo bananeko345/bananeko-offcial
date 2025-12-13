@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <title>banasaba server</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
     body {
@@ -13,14 +14,13 @@
       overflow-x: hidden;
     }
 
-    /* ▼ アニメーション */
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
     .fade { animation: fadeIn 1s ease-out; }
 
-    /* ▼ ナビバー */
+    /* ナビバー */
     .navbar {
       width: 100%;
       padding: 15px 25px;
@@ -45,7 +45,7 @@
       font-weight: bold;
     }
 
-    /* ▼ Discordボタン */
+    /* Discordボタン */
     .discord-btn {
       padding: 8px 15px;
       background: #5865F2;
@@ -55,6 +55,7 @@
       text-decoration: none;
       font-weight: bold;
       transition: 0.2s;
+      white-space: nowrap;
     }
 
     .discord-btn:hover {
@@ -68,7 +69,7 @@
       font-size: 18px;
     }
 
-    /* ▼ 背景共通 */
+    /* 背景セクション */
     .section {
       height: 100vh;
       background-size: cover;
@@ -78,8 +79,6 @@
       align-items: center;
       flex-direction: column;
       text-shadow: 0 0 5px black;
-      text-align: center;
-      padding: 20px;
     }
 
     .section1 {
@@ -94,35 +93,48 @@
       background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");
     }
 
-    /* ▼ ボタン */
-    .rule-btn, .form-btn {
-      margin-top: 25px;
-      padding: 14px 28px;
+    .rule-btn {
+      margin-top: 20px;
+      padding: 12px 25px;
       background: orange;
       border: none;
-      border-radius: 12px;
+      border-radius: 10px;
       font-size: 20px;
       cursor: pointer;
       font-weight: bold;
-      text-decoration: none;
-      color: black;
-      display: inline-block;
     }
 
-    .rule-btn:hover,
-    .form-btn:hover {
+    .rule-btn:hover {
       background: #ffca4b;
     }
 
+    /* スマホ対応 */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-left {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .nav-links {
+        margin-top: 10px;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- ▼ ナビバー -->
+  <!-- ナビバー -->
   <div class="navbar fade">
     <div class="nav-left">
       <div class="nav-title">banasaba server</div>
-      <a href="https://discord.gg/Mz8vqjchQs" target="_blank" class="discord-btn">
+
+      <!-- ★ ここ！！Discordボタン！！★ -->
+      <a href="https://discord.gg/Mz8vqjchQs"
+         target="_blank"
+         class="discord-btn">
         Discordに参加
       </a>
     </div>
@@ -135,38 +147,32 @@
     </div>
   </div>
 
-  <!-- ▼ 1枚目 -->
+  <!-- 1枚目 -->
   <div class="section section1 fade">
     <h1 style="font-size: 50px;">banasaba server</h1>
     <h2>毎日楽しくやろう。</h2>
-
     <button class="rule-btn" onclick="location.href='Rules.html'">
       ルールを見る
     </button>
   </div>
 
-  <!-- ▼ 2枚目（文章変更） -->
+  <!-- 2枚目 -->
   <div class="section section2 fade" id="about">
     <h1>サーバー紹介</h1>
-    <p style="font-size: 20px; max-width: 800px;">
-      pvp鯖、サバイバル鯖や、<br>
-      いろんなサーバーがあるサーバーです！
+    <p style="font-size:20px;">
+      pvp鯖、サバイバル鯖や、いろんなサーバーがあるサーバーです！
     </p>
   </div>
 
-  <!-- ▼ 3枚目（運営応募フォーム） -->
+  <!-- 3枚目 -->
   <div class="section section3 fade">
-    <h1>運営メンバー募集</h1>
-    <p style="font-size: 20px;">
-      Moderator / Admin になりたい人はこちら！
-    </p>
+    <h1>運営募集</h1>
+    <p>Moderator / Admin 募集中！</p>
 
-    <a
-      href="https://docs.google.com/forms/d/1IFT1AQ25F0bJluCoKlDmIYY906AC18ea7mLn7ZZjDOQ/edit#responses"
-      target="_blank"
-      class="form-btn"
-    >
-      応募フォームを開く
+    <a href="https://docs.google.com/forms/d/1IFT1AQ25F0bJluCoKlDmIYY906AC18ea7mLn7ZZjDOQ/viewform"
+       target="_blank"
+       class="rule-btn">
+      応募フォームへ
     </a>
   </div>
 
