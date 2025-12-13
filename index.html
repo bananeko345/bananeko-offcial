@@ -45,7 +45,6 @@
       font-weight: bold;
     }
 
-    /* ▼ Discordボタン */
     .discord-btn {
       padding: 8px 15px;
       background: #5865F2;
@@ -92,7 +91,7 @@
       background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");
     }
 
-    /* ▼ 左側サーバー情報BOX */
+    /* ▼ 左下 サーバー情報BOX */
     .server-info {
       position: absolute;
       left: 30px;
@@ -104,16 +103,15 @@
       min-width: 220px;
     }
 
-    /* ▼ 右側 IPアドレス */
+    /* ▼ 右上 IPアドレス */
     .server-ip {
       position: absolute;
       right: 30px;
-      top: 100px;
+      top: 80px; /* 少し下に */
       background: rgba(0,0,0,0.6);
-      padding: 15px 20px;
-      border-radius: 15px;
+      padding: 12px 18px;
+      border-radius: 12px;
       font-size: 18px;
-      text-align: left;
     }
 
     /* ▼ ボタン */
@@ -175,17 +173,17 @@
       ルールを見る
     </button>
 
-    <!-- 左側 サーバー状態＆人数 -->
+    <!-- 左下 サーバー状態＆人数 -->
     <div class="server-info fade">
       <div id="server-status">🕒 状態確認中...</div>
       <div id="player-count">👥 人数確認中...</div>
     </div>
 
-    <!-- 右側 IPアドレス -->
+    <!-- 右上 IPアドレス -->
     <div class="server-ip fade">
-      <div>Java: BANASABA.aternos.me</div>
-      <div>統合版: BANASABA.aternos.me</div>
-      <div>ポート: 55396</div>
+      Java: BANASABA.aternos.me<br>
+      統合版: BANASABA.aternos.me<br>
+      ポート: 55396
     </div>
   </div>
 
@@ -219,19 +217,21 @@
         const status = document.getElementById("server-status");
         const players = document.getElementById("player-count");
 
-        // オンラインでかつ players オブジェクトがある場合のみ緑にする
-        if (data.online && data.players) {
+        // 誰も参加していない場合はオフライン（赤）、1人以上ならオンライン（緑）
+        if (data.online && data.players && data.players.online > 0) {
           status.innerHTML = "🟢 サーバー：オンライン";
-          players.innerHTML = `👥 人数：${data.players.online} / ${data.players.max}`;
+          players.innerHTML =
+            `👥 人数：${data.players.online} / ${data.players.max}`;
         } else {
-          // オフラインまたは players 情報が無い場合は赤にする
           status.innerHTML = "🔴 サーバー：オフライン";
           players.innerHTML = "👥 人数：0";
         }
       })
       .catch(() => {
-        document.getElementById("server-status").innerHTML = "⚠ 状態取得失敗";
-        document.getElementById("player-count").innerHTML = "⚠ 人数取得失敗";
+        document.getElementById("server-status").innerHTML =
+          "⚠ 状態取得失敗";
+        document.getElementById("player-count").innerHTML =
+          "⚠ 人数取得失敗";
       });
   </script>
 
