@@ -45,6 +45,7 @@
       font-weight: bold;
     }
 
+    /* ▼ Discordボタン */
     .discord-btn {
       padding: 8px 15px;
       background: #5865F2;
@@ -64,18 +65,6 @@
       color: white;
       text-decoration: none;
       font-size: 18px;
-    }
-
-    /* ▼ IPアドレス表示 */
-    .ip-display {
-      position: absolute;
-      right: 30px;
-      top: 80px; /* 少し下にずらした */
-      background: rgba(0,0,0,0.6);
-      padding: 10px 15px;
-      border-radius: 12px;
-      font-size: 18px;
-      text-align: right;
     }
 
     /* ▼ セクション */
@@ -113,6 +102,18 @@
       border-radius: 15px;
       font-size: 18px;
       min-width: 220px;
+    }
+
+    /* ▼ 右側 IPアドレス */
+    .server-ip {
+      position: absolute;
+      right: 30px;
+      top: 100px;
+      background: rgba(0,0,0,0.6);
+      padding: 15px 20px;
+      border-radius: 15px;
+      font-size: 18px;
+      text-align: left;
     }
 
     /* ▼ ボタン */
@@ -174,14 +175,14 @@
       ルールを見る
     </button>
 
-    <!-- ★ 左側 サーバー状態＆人数 ★ -->
+    <!-- 左側 サーバー状態＆人数 -->
     <div class="server-info fade">
       <div id="server-status">🕒 状態確認中...</div>
       <div id="player-count">👥 人数確認中...</div>
     </div>
 
-    <!-- ★ 右上 IPアドレス ★ -->
-    <div class="ip-display fade">
+    <!-- 右側 IPアドレス -->
+    <div class="server-ip fade">
       <div>Java: BANASABA.aternos.me</div>
       <div>統合版: BANASABA.aternos.me</div>
       <div>ポート: 55396</div>
@@ -218,20 +219,19 @@
         const status = document.getElementById("server-status");
         const players = document.getElementById("player-count");
 
-        if (data.online) {
+        // オンラインでかつ players オブジェクトがある場合のみ緑にする
+        if (data.online && data.players) {
           status.innerHTML = "🟢 サーバー：オンライン";
-          players.innerHTML =
-            `👥 人数：${data.players.online || 0} / ${data.players.max || "?"}`;
+          players.innerHTML = `👥 人数：${data.players.online} / ${data.players.max}`;
         } else {
+          // オフラインまたは players 情報が無い場合は赤にする
           status.innerHTML = "🔴 サーバー：オフライン";
           players.innerHTML = "👥 人数：0";
         }
       })
       .catch(() => {
-        document.getElementById("server-status").innerHTML =
-          "⚠ 状態取得失敗";
-        document.getElementById("player-count").innerHTML =
-          "⚠ 人数取得失敗";
+        document.getElementById("server-status").innerHTML = "⚠ 状態取得失敗";
+        document.getElementById("player-count").innerHTML = "⚠ 人数取得失敗";
       });
   </script>
 
