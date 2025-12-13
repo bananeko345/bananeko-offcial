@@ -1,228 +1,199 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <title>banasaba server</title>
+<meta charset="UTF-8">
+<title>banasaba server</title>
 
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      overflow-x: hidden;
-    }
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  overflow-x: hidden;
+}
 
-    /* ▼ アニメーション */
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: translateY(20px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
-    .fade { animation: fadeIn 1s ease-out; }
+/* ▼ アニメーション */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade { animation: fadeIn 1s ease-out; }
 
-    /* ▼ ナビバー */
-    .navbar {
-      width: 100%;
-      padding: 15px 25px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(0,0,0,0.6);
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 10;
-    }
+/* ▼ ナビバー */
+.navbar {
+  width: 100%;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
 
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
 
-    .nav-title {
-      font-size: 25px;
-      font-weight: bold;
-    }
+.nav-title {
+  font-size: 25px;
+  font-weight: bold;
+}
 
-    .discord-btn {
-      padding: 8px 15px;
-      background: #5865F2;
-      border-radius: 8px;
-      color: white;
-      font-size: 16px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+/* Discordボタン */
+.discord-btn {
+  padding: 8px 15px;
+  background: #5865F2;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+}
+.discord-btn:hover {
+  background: #6d76ff;
+}
 
-    .discord-btn:hover {
-      background: #6d76ff;
-    }
+.nav-links a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
 
-    .nav-links a {
-      margin-left: 20px;
-      color: white;
-      text-decoration: none;
-      font-size: 18px;
-    }
+/* ▼ 背景セクション */
+.section {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-shadow: 0 0 5px black;
+}
 
-    /* ▼ セクション */
-    .section {
-      height: 100vh;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      text-shadow: 0 0 5px black;
-      position: relative;
-    }
+.section1 {
+  background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/20251211-1825_351cdaa0c682ed5b47b5ee0c7d1a8be1.png");
+}
+.section2 {
+  background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png");
+}
+.section3 {
+  background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");
+}
 
-    .section1 {
-      background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/20251211-1825_351cdaa0c682ed5b47b5ee0c7d1a8be1.png");
-    }
+/* ▼ ルールボタン */
+.rule-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: orange;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.rule-btn:hover {
+  background: #ffca4b;
+}
 
-    .section2 {
-      background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png");
-    }
+/* ▼ 左側情報BOX */
+.info-box {
+  position: absolute;
+  left: 30px;
+  bottom: 100px;
+  background: rgba(0,0,0,0.6);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: left;
+  font-size: 16px;
+}
 
-    .section3 {
-      background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");
-    }
+/* サーバー状態 色 */
+.status-online {
+  color: #00ff66;
+  font-weight: bold;
+}
+.status-offline {
+  color: #ff4444;
+  font-weight: bold;
+}
 
-    /* ▼ 左下サーバー情報 */
-    .server-info {
-      position: absolute;
-      left: 30px;
-      bottom: 30px;
-      background: rgba(0,0,0,0.6);
-      padding: 15px 20px;
-      border-radius: 15px;
-      font-size: 18px;
-      min-width: 230px;
-    }
-
-    /* ▼ ボタン */
-    .rule-btn {
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: orange;
-      border: none;
-      border-radius: 10px;
-      font-size: 20px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .rule-btn:hover {
-      background: #ffca4b;
-    }
-
-    .form-btn {
-      margin-top: 20px;
-      padding: 14px 30px;
-      background: #00ffcc;
-      border-radius: 12px;
-      font-size: 20px;
-      font-weight: bold;
-      text-decoration: none;
-      color: black;
-    }
-
-    .form-btn:hover {
-      background: #5fffff;
-    }
-  </style>
+/* IP表示 */
+.server-ip {
+  margin-top: 10px;
+  font-size: 14px;
+}
+</style>
 </head>
+
 <body>
 
-  <!-- ▼ ナビバー -->
-  <div class="navbar fade">
-    <div class="nav-left">
-      <div class="nav-title">banasaba server</div>
-      <a href="https://discord.gg/Mz8vqjchQs" target="_blank" class="discord-btn">
-        Discordに参加
-      </a>
-    </div>
-
-    <div class="nav-links">
-      <a href="index.html">ホーム</a>
-      <a href="Rules.html">ルール</a>
-      <a href="#about">サーバー紹介</a>
-      <a href="mailto:bananeko345@gmail.com">お問い合わせ</a>
-    </div>
-  </div>
-
-  <!-- ▼ 1枚目 -->
-  <div class="section section1 fade">
-    <h1 style="font-size:50px;">banasaba server</h1>
-    <h2>毎日楽しくやろう。</h2>
-
-    <button class="rule-btn" onclick="location.href='Rules.html'">
-      ルールを見る
-    </button>
-
-    <!-- ★ サーバー状態＆人数 ★ -->
-    <div class="server-info fade">
-      <div id="server-status">確認中...</div>
-      <div id="player-count"></div>
-    </div>
-  </div>
-
-  <!-- ▼ 2枚目 -->
-  <div class="section section2 fade" id="about">
-    <h1>サーバー紹介</h1>
-    <p>
-      pvp鯖、サバイバル鯖や、<br>
-      いろんなサーバーがあるサーバーです！
-    </p>
-  </div>
-
-  <!-- ▼ 3枚目 -->
-  <div class="section section3 fade">
-    <h1>運営募集</h1>
-    <p>Moderator / Admin / Builder 募集中！</p>
-    <a class="form-btn"
-       href="https://docs.google.com/forms/d/1IFT1AQ25F0bJluCoKlDmIYY906AC18ea7mLn7ZZjDOQ"
-       target="_blank">
-      応募フォームへ
+<!-- ▼ ナビバー -->
+<div class="navbar fade">
+  <div class="nav-left">
+    <div class="nav-title">banasaba server</div>
+    <a href="https://discord.gg/Mz8vqjchQs" target="_blank" class="discord-btn">
+      Discordに参加
     </a>
   </div>
 
-  <!-- ▼ サーバー状態判定（黄色→緑） -->
-  <script>
-    const serverIP = "BANASABA.aternos.me";
+  <div class="nav-links">
+    <a href="index.html">ホーム</a>
+    <a href="Rules.html">ルール</a>
+    <a href="#about">サーバー紹介</a>
+    <a href="mailto:bananeko345@gmail.com">お問い合わせ</a>
+  </div>
+</div>
 
-    fetch(`https://api.mcsrvstat.us/2/${serverIP}`)
-      .then(res => res.json())
-      .then(data => {
-        const status = document.getElementById("server-status");
-        const players = document.getElementById("player-count");
+<!-- ▼ 1枚目 -->
+<div class="section section1 fade">
+  <h1 style="font-size:50px;">banasaba server</h1>
+  <h2>毎日楽しくやろう。</h2>
 
-        if (data.online) {
-          if (data.players && data.players.online > 0) {
-            status.innerHTML = "🟢 サーバーはオンライン";
-            status.style.color = "#00ff66";
-            players.innerHTML = `参加人数：${data.players.online}人`;
-            players.style.color = "#00ff66";
-          } else {
-            status.innerHTML = "🟡 サーバーはオンライン";
-            status.style.color = "#ffeb3b";
-            players.innerHTML = "参加してる人：0人";
-            players.style.color = "#ffeb3b";
-          }
-        } else {
-          status.innerHTML = "🔴 サーバーはオフライン";
-          status.style.color = "#ff5555";
-          players.innerHTML = "";
-        }
-      })
-      .catch(() => {
-        document.getElementById("server-status").innerHTML =
-          "⚠ 状態を取得できません";
-      });
-  </script>
+  <button class="rule-btn" onclick="location.href='Rules.html'">
+    ルールを見る
+  </button>
+
+  <!-- 左下情報 -->
+  <div class="info-box">
+    <div class="status-online">🟢 サーバーはオンライン</div>
+    👥 参加人数：0人
+
+    <div class="server-ip">
+      <div>🟦 Java版：BANASABA.aternos.me</div>
+      <div>🟩 統合版：BANASABA.aternos.me</div>
+      <div>🔌 ポート：55396</div>
+    </div>
+  </div>
+</div>
+
+<!-- ▼ 2枚目 -->
+<div class="section section2 fade" id="about">
+  <h1>サーバー紹介</h1>
+  <p>
+    pvp鯖、サバイバル鯖や、<br>
+    いろんなサーバーがあるサーバーです！
+  </p>
+</div>
+
+<!-- ▼ 3枚目（フォーム） -->
+<div class="section section3 fade">
+  <h1>運営になりたい人はこちら</h1>
+  <p>Moderator / Admin / Builder 募集中！</p>
+
+  <a href="https://docs.google.com/forms/d/1IFT1AQ25F0bJluCoKlDmIYY906AC18ea7mLn7ZZjDOQ/edit#responses"
+     target="_blank"
+     class="rule-btn">
+    応募フォームを開く
+  </a>
+</div>
 
 </body>
 </html>
