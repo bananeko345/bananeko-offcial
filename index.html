@@ -64,10 +64,9 @@
       color: white;
       text-decoration: none;
       font-size: 18px;
-      cursor: pointer;
     }
 
-    /* ▼ セクション背景 */
+    /* ▼ セクション */
     .section {
       height: 100vh;
       background-size: cover;
@@ -77,6 +76,7 @@
       align-items: center;
       flex-direction: column;
       text-shadow: 0 0 5px black;
+      position: relative;
     }
 
     .section1 {
@@ -89,6 +89,18 @@
 
     .section3 {
       background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");
+    }
+
+    /* ▼ 左側サーバー情報BOX */
+    .server-info {
+      position: absolute;
+      left: 30px;
+      bottom: 30px;
+      background: rgba(0,0,0,0.6);
+      padding: 15px 20px;
+      border-radius: 15px;
+      font-size: 18px;
+      min-width: 220px;
     }
 
     /* ▼ ボタン */
@@ -121,7 +133,6 @@
     .form-btn:hover {
       background: #5fffff;
     }
-
   </style>
 </head>
 <body>
@@ -134,7 +145,6 @@
         Discordに参加
       </a>
     </div>
-
     <div class="nav-links">
       <a href="index.html">ホーム</a>
       <a href="Rules.html">ルール</a>
@@ -145,23 +155,17 @@
 
   <!-- ▼ 1枚目 -->
   <div class="section section1 fade">
-    <h1 style="font-size: 50px;">banasaba server</h1>
+    <h1 style="font-size:50px;">banasaba server</h1>
     <h2>毎日楽しくやろう。</h2>
 
     <button class="rule-btn" onclick="location.href='Rules.html'">
       ルールを見る
     </button>
 
-    <!-- ★ サーバー状態表示 ★ -->
-    <div id="server-status" style="
-      margin-top:15px;
-      font-size:22px;
-      font-weight:bold;
-      background:rgba(0,0,0,0.5);
-      padding:10px 20px;
-      border-radius:10px;
-    ">
-      サーバー状態：確認中...
+    <!-- ★ 左側 サーバー状態＆人数 ★ -->
+    <div class="server-info fade">
+      <div id="server-status">🕒 状態確認中...</div>
+      <div id="player-count">👥 人数確認中...</div>
     </div>
   </div>
 
@@ -178,15 +182,14 @@
   <div class="section section3 fade">
     <h1>運営募集</h1>
     <p>Moderator / Admin / Builder 募集中！</p>
-
     <a class="form-btn"
-      href="https://docs.google.com/forms/d/1IFT1AQ25F0bJluCoKlDmIYY906AC18ea7mLn7ZZjDOQ"
-      target="_blank">
+       href="https://docs.google.com/forms/d/1IFT1AQ25F0bJluCoKlDmIYY906AC18ea7mLn7ZZjDOQ"
+       target="_blank">
       応募フォームへ
     </a>
   </div>
 
-  <!-- ▼ サーバー状態取得 -->
+  <!-- ▼ サーバー状態・人数取得 -->
   <script>
     const serverIP = "BANASABA.aternos.me";
 
@@ -194,15 +197,22 @@
       .then(res => res.json())
       .then(data => {
         const status = document.getElementById("server-status");
+        const players = document.getElementById("player-count");
+
         if (data.online) {
-          status.innerHTML = "🟢 サーバーはオンライン！";
+          status.innerHTML = "🟢 サーバー：オンライン";
+          players.innerHTML =
+            `👥 人数：${data.players.online} / ${data.players.max}`;
         } else {
-          status.innerHTML = "🔴 サーバーはオフライン";
+          status.innerHTML = "🔴 サーバー：オフライン";
+          players.innerHTML = "👥 人数：0";
         }
       })
       .catch(() => {
         document.getElementById("server-status").innerHTML =
-          "⚠ 状態を取得できません";
+          "⚠ 状態取得失敗";
+        document.getElementById("player-count").innerHTML =
+          "⚠ 人数取得失敗";
       });
   </script>
 
