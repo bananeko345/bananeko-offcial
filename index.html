@@ -66,10 +66,9 @@
       color: white;
       text-decoration: none;
       font-size: 18px;
-      cursor: pointer;
     }
 
-    /* ▼ 背景セクション共通 */
+    /* ▼ 背景共通 */
     .section {
       height: 100vh;
       background-size: cover;
@@ -79,6 +78,8 @@
       align-items: center;
       flex-direction: column;
       text-shadow: 0 0 5px black;
+      text-align: center;
+      padding: 20px;
     }
 
     .section1 {
@@ -89,24 +90,27 @@
       background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png");
     }
 
-    /* ★ 追加した3枚目の背景 ★ */
     .section3 {
       background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");
     }
 
     /* ▼ ボタン */
-    .rule-btn {
-      margin-top: 20px;
-      padding: 12px 25px;
+    .rule-btn, .form-btn {
+      margin-top: 25px;
+      padding: 14px 28px;
       background: orange;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       font-size: 20px;
       cursor: pointer;
       font-weight: bold;
+      text-decoration: none;
+      color: black;
+      display: inline-block;
     }
 
-    .rule-btn:hover {
+    .rule-btn:hover,
+    .form-btn:hover {
       background: #ffca4b;
     }
 
@@ -131,7 +135,7 @@
     </div>
   </div>
 
-  <!-- ▼ 1つ目の背景 -->
+  <!-- ▼ 1枚目 -->
   <div class="section section1 fade">
     <h1 style="font-size: 50px;">banasaba server</h1>
     <h2>毎日楽しくやろう。</h2>
@@ -141,16 +145,29 @@
     </button>
   </div>
 
-  <!-- ▼ 2つ目の背景 -->
+  <!-- ▼ 2枚目（文章変更） -->
   <div class="section section2 fade" id="about">
     <h1>サーバー紹介</h1>
-    <p>みんなで遊べるサーバーだよ！</p>
+    <p style="font-size: 20px; max-width: 800px;">
+      pvp鯖、サバイバル鯖や、<br>
+      いろんなサーバーがあるサーバーです！
+    </p>
   </div>
 
-  <!-- ▼ 3つ目の背景（追加） -->
+  <!-- ▼ 3枚目（運営応募フォーム） -->
   <div class="section section3 fade">
-    <h1>banasaba server</h1>
-    <p>Discordでみんな待ってるよ！</p>
+    <h1>運営メンバー募集</h1>
+    <p style="font-size: 20px;">
+      Moderator / Admin になりたい人はこちら！
+    </p>
+
+    <a
+      href="https://docs.google.com/forms/d/1IFT1AQ25F0bJluCoKlDmIYY906AC18ea7mLn7ZZjDOQ/edit#responses"
+      target="_blank"
+      class="form-btn"
+    >
+      応募フォームを開く
+    </a>
   </div>
 
 </body>
