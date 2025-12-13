@@ -91,11 +91,9 @@
       background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");
     }
 
-    /* ▼ 左側サーバー情報BOX */
+    /* ▼ 左右の情報BOX */
     .server-info {
       position: absolute;
-      left: 30px;
-      bottom: 30px;
       background: rgba(0,0,0,0.6);
       padding: 15px 20px;
       border-radius: 15px;
@@ -162,10 +160,17 @@
       ルールを見る
     </button>
 
-    <!-- ★ 左側 サーバー状態＆人数 ★ -->
-    <div class="server-info fade">
+    <!-- ★ 左下 サーバー状態＆人数 ★ -->
+    <div class="server-info fade" style="left: 30px; bottom: 30px;">
       <div id="server-status">🕒 状態確認中...</div>
       <div id="player-count">👥 人数確認中...</div>
+    </div>
+
+    <!-- ★ 右上 IPアドレス ★ -->
+    <div class="server-info fade" style="right: 30px; top: 30px; left: auto; bottom: auto; text-align: right;">
+      <div>💻 Java: BANASABA.aternos.me</div>
+      <div>💻 統合版: BANASABA.aternos.me</div>
+      <div>🛠 ポート: 55396</div>
     </div>
   </div>
 
@@ -201,18 +206,15 @@
 
         if (data.online) {
           status.innerHTML = "🟢 サーバー：オンライン";
-          players.innerHTML =
-            `👥 人数：${data.players.online} / ${data.players.max}`;
+          players.innerHTML = `👥 人数：${data.players.online} / ${data.players.max}`;
         } else {
           status.innerHTML = "🔴 サーバー：オフライン";
           players.innerHTML = "👥 人数：0";
         }
       })
       .catch(() => {
-        document.getElementById("server-status").innerHTML =
-          "⚠ 状態取得失敗";
-        document.getElementById("player-count").innerHTML =
-          "⚠ 人数取得失敗";
+        document.getElementById("server-status").innerHTML = "⚠ 状態取得失敗";
+        document.getElementById("player-count").innerHTML = "⚠ 人数取得失敗";
       });
   </script>
 
