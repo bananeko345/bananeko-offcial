@@ -57,15 +57,16 @@ body { margin:0; padding:0; font-family:Arial,sans-serif; color:white; overflow-
 </div>
 
 <script>
-// Java版サーバーIP
+// Java版サーバーIP（ポートは付けずに）
 const statusDiv = document.getElementById('status');
 const serverIP = "BANASABA.aternos.me";
 
 // サーバー状態を取得する関数
 function checkServer() {
-  fetch(`https://api.mcsrvstat.us/2/BANASABA.aternos.me:55396`)
+  fetch(`https://api.mcsrvstat.us/2/${serverIP}`)
     .then(response => response.json())
     .then(data => {
+      // オンライン判定
       if(data.online){
         statusDiv.textContent = "サーバーはオンラインです ✅";
         statusDiv.style.color = "lime";
