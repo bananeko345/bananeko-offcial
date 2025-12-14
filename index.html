@@ -103,7 +103,6 @@
       background: #ffca4b;
     }
 
-    /* ▼ サーバーステータス表示用ボックス（左下） */
     #server-info {
       position: absolute;
       bottom: 20px;
@@ -114,9 +113,9 @@
       font-size: 18px;
       font-weight: bold;
       text-align: left;
+      white-space: pre-line; /* 改行対応 */
     }
 
-    /* 3つ目の募集ボタン */
     .apply-btn {
       margin-top: 20px;
       padding: 12px 25px;
@@ -150,30 +149,29 @@
     </div>
   </div>
 
-  <!-- ▼ 1つ目の背景 -->
+  <!-- 1つ目の背景 -->
   <div class="section section1 fade">
     <h1 style="font-size: 50px;">banasaba server</h1>
     <h2>毎日楽しくやろう。</h2>
-
     <button class="rule-btn" onclick="location.href='Rules.html'">ルールを見る</button>
 
-    <div id="server-info">サーバー: 読み込み中…　参加人数: …</div>
+    <div id="server-info">サーバー: 読み込み中…\n参加人数: …</div>
   </div>
 
-  <!-- ▼ 2つ目の背景 -->
+  <!-- 2つ目の背景 -->
   <div class="section section2 fade" id="about">
     <h1>サーバー紹介</h1>
     <p>pvp鯖や、サバイバル鯖がある楽しめるサーバーです！</p>
   </div>
 
-  <!-- ▼ 3つ目の背景 -->
+  <!-- 3つ目の背景 -->
   <div class="section section3 fade">
     <h1>メンバー募集</h1>
     <p>Moderator / Admin / Entertainment 募集！</p>
     <a href="https://docs.google.com/forms/d/1IFT1AQ25F0bJluCoKlDmIYY906AC18ea7mLn7ZZjDOQ/edit#responses" target="_blank" class="apply-btn">応募フォームはこちら</a>
   </div>
 
-  <!-- ▼ サーバーステータス取得スクリプト -->
+  <!-- サーバーステータス取得スクリプト -->
   <script>
     async function updateServerStatus() {
       try {
@@ -181,12 +179,13 @@
         const data = await response.json();
         const serverInfo = document.getElementById('server-info');
 
+        // オンラインなら緑表示、オフラインなら赤表示
         if (data.online) {
           const players = data.players && data.players.online ? data.players.online : 0;
-          serverInfo.textContent = `オフラインサーバー: \n参加人数: 0人`;
+          serverInfo.textContent = `サーバー: オンライン\n参加人数: ${players}人`;
           serverInfo.style.color = "lime";
         } else {
-          serverInfo.textContent = "サーバー: オンライン\n参加人数: ${players}人";
+          serverInfo.textContent = "サーバー: オフライン\n参加人数: 0人";
           serverInfo.style.color = "red";
         }
       } catch (err) {
