@@ -165,10 +165,10 @@
         const data = await response.json();
 
         if(data.online) {
-          document.getElementById('server-status').textContent = "サーバーはオンラインです！✔️";
+          document.getElementById('server-status').textContent = "サーバーはオフラインです！❌";
           document.getElementById('server-status').style.color = "lime";
         } else {
-          document.getElementById('server-status').textContent = "サーバーはオフラインです❌";
+          document.getElementById('server-status').textContent = "サーバーはオンラインです！✔️";
           document.getElementById('server-status').style.color = "red";
         }
       } catch(err) {
