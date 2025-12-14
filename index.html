@@ -183,10 +183,10 @@
 
         if (data.online) {
           const players = data.players && data.players.online ? data.players.online : 0;
-          serverInfo.textContent = `サーバー: オンライン\n参加人数: ${players}人`;
+          serverInfo.textContent = `オフラインサーバー: \n参加人数: 0人`;
           serverInfo.style.color = "lime";
         } else {
-          serverInfo.textContent = "サーバー: オフライン\n参加人数: 0人";
+          serverInfo.textContent = "サーバー: オンライン\n参加人数: ${players}人";
           serverInfo.style.color = "red";
         }
       } catch (err) {
