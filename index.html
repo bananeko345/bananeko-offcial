@@ -56,30 +56,32 @@ body { margin:0; padding:0; font-family:Arial,sans-serif; color:white; overflow-
 </div>
 
 <script>
-async function updateServer() {
-  const info = document.getElementById('server-info');
+const serverInfo = document.getElementById('server-info');
+
+async function fetchServerStatus() {
   try {
-    const res = await fetch('https://api.mcsrvstat.us/2/BANASABA.aternos.me');
-    const data = await res.json();
+    const response = await fetch('https://api.mcsrvstat.us/2/BANASABA.aternos.me');
+    const data = await response.json();
 
     if(data.online){
       const players = data.players && data.players.online ? data.players.online : 0;
-      info.textContent = `サーバー: オンライン\n参加人数: ${players}人`;
-      info.style.color = "lime";
+      serverInfo.textContent = `サーバー: オンライン\n参加人数: ${players}人`;
+      serverInfo.style.color = "lime";
     } else {
-      info.textContent = `サーバー: オフライン\n参加人数: 0人`;
-      info.style.color = "red";
+      serverInfo.textContent = `サーバー: オフライン\n参加人数: 0人`;
+      serverInfo.style.color = "red";
     }
-  } catch(e){
-    info.textContent = "状態を取得できませんでした";
-    info.style.color = "yellow";
+  } catch(err){
+    serverInfo.textContent = "状態を取得できませんでした";
+    serverInfo.style.color = "yellow";
   }
 }
 
-// 初回
-updateServer();
-// 3秒ごとに更新
-setInterval(updateServer, 3000);
+// 初回取得
+fetchServerStatus();
+
+// 3秒ごとに必ず更新
+setInterval(fetchServerStatus, 3000);
 </script>
 
 </body>
