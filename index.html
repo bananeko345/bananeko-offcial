@@ -32,6 +32,7 @@ body { margin:0; padding:0; font-family:Arial,sans-serif; color:white; overflow-
 }
 #server-status.online { color: #00ff00; }
 #server-status.offline { color: #ff4d4d; }
+#server-note { margin-left:15px; color:#ff4d4d; font-size:16px; }
 </style>
 </head>
 <body>
@@ -52,7 +53,10 @@ body { margin:0; padding:0; font-family:Arial,sans-serif; color:white; overflow-
 
 <div class="section section1">
   <!-- サーバー状態表示（左下） -->
-  <div id="server-status">サーバー状態: 読み込み中...</div>
+  <div id="server-status">
+    サーバー状態: 読み込み中...
+    <span id="server-note">※オフラインはオンラインで、オンラインはオフラインになってます</span>
+  </div>
 
   <h1 style="font-size:50px;">banasaba server</h1>
   <h2>毎日楽しくやろう。</h2>
@@ -81,19 +85,18 @@ async function checkServer() {
         const data = await response.json();
 
         if(data.online === true){
-            // オンライン人数を取得（人数が未定義の場合は0）
             const onlinePlayers = data.players && typeof data.players.online === 'number' ? data.players.online : 0;
-            statusElement.textContent = `サーバー状態: オンライン（人数: ${onlinePlayers}）`;
+            statusElement.innerHTML = `サーバー状態: オンライン（人数: ${onlinePlayers}）<span id="server-note">※オフラインはオンラインで、オンラインはオフラインになってます</span>`;
             statusElement.classList.remove("offline");
             statusElement.classList.add("online");
         } else {
-            statusElement.textContent = "サーバー状態: オフライン";
+            statusElement.innerHTML = `サーバー状態: オフライン<span id="server-note">※オフラインはオンラインで、オンラインはオフラインになってます</span>`;
             statusElement.classList.remove("online");
             statusElement.classList.add("offline");
         }
     } catch (error) {
         console.error("サーバー状態取得エラー:", error);
-        statusElement.textContent = "サーバー状態: オフライン";
+        statusElement.innerHTML = `サーバー状態: オフライン<span id="server-note">※オフラインはオンラインで、オンラインはオフラインになってます</span>`;
         statusElement.classList.remove("online");
         statusElement.classList.add("offline");
     }
