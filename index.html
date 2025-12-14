@@ -19,7 +19,19 @@ body { margin:0; padding:0; font-family:Arial,sans-serif; color:white; overflow-
 .rule-btn:hover{background:#ffca4b;}
 .apply-btn{margin-top:20px;padding:12px 25px;background:#00bfff;border-radius:10px;font-size:20px;text-decoration:none;color:white;}
 .apply-btn:hover{background:#33cfff;}
-.status-box{margin-top:20px;font-size:22px;padding:10px 20px;background:rgba(0,0,0,0.5);border-radius:8px;}
+#server-status { 
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding:10px 15px;
+    border-radius:10px;
+    font-size:20px;
+    font-weight:bold;
+    background: rgba(0,0,0,0.5);
+    z-index:5;
+}
+#server-status.online { color: #00ff00; }
+#server-status.offline { color: #ff4d4d; }
 </style>
 </head>
 <body>
@@ -34,15 +46,17 @@ body { margin:0; padding:0; font-family:Arial,sans-serif; color:white; overflow-
     <a href="Rules.html">ルール</a>
     <a href="#about">サーバー紹介</a>
     <a href="mailto:bananeko345@gmail.com">お問い合わせ</a>
-    <a href="ip.html">サーバーIP</a>
+    <a href="#" onclick="alert('サーバーIP: banasaba.aternos.me');">サーバーIP</a>
   </div>
 </div>
 
 <div class="section section1">
+  <!-- サーバー状態表示（左上） -->
+  <div id="server-status">サーバー状態: 読み込み中...</div>
+
   <h1 style="font-size:50px;">banasaba server</h1>
   <h2>毎日楽しくやろう。</h2>
   <button class="rule-btn" onclick="location.href='Rules.html'">ルールを見る</button>
-  <div class="status-box" id="status">サーバー状態を読み込み中...</div>
 </div>
 
 <div class="section section2" id="about">
@@ -57,36 +71,37 @@ body { margin:0; padding:0; font-family:Arial,sans-serif; color:white; overflow-
 </div>
 
 <script>
-// Java版サーバーIP（ポートは付けずに）
-const statusDiv = document.getElementById('status');
 const serverIP = "BANASABA.aternos.me";
+const serverPort = "55396";
+const statusElement = document.getElementById("server-status");
 
-// サーバー状態を取得する関数
-function checkServer() {
-  fetch(`https://api.mcsrvstat.us/2/${serverIP}`)
-    .then(response => response.json())
-    .then(data => {
-      // オンライン判定
-      if(data.online){
-        statusDiv.textContent = "サーバーはオンラインです ✅";
-        statusDiv.style.color = "lime";
-      } else {
-        statusDiv.textContent = "サーバーはオフラインです ❌";
-        statusDiv.style.color = "red";
-      }
-    })
-    .catch(err => {
-      statusDiv.textContent = "サーバー情報を取得できません";
-      statusDiv.style.color = "orange";
-      console.error(err);
-    });
+async function checkServer() {
+    try {
+        const response = await fetch(`https://api.mcsrvstat.us/2/${serverIP}:${serverPort}`);
+        const data = await response.json();
+
+        if(data.online === true && data.players && data.players.online > 0){
+            statusElement.textContent = "サーバー状態: オンライン";
+            statusElement.classList.remove("offline");
+            statusElement.classList.add("online");
+        } else {
+            statusElement.textContent = "サーバー状態: オフライン";
+            statusElement.classList.remove("online");
+            statusElement.classList.add("offline");
+        }
+    } catch (error) {
+        console.error("サーバー状態取得エラー:", error);
+        statusElement.textContent = "サーバー状態: オフライン";
+        statusElement.classList.remove("online");
+        statusElement.classList.add("offline");
+    }
 }
 
-// ページ読み込み時に最初のチェック
+// 初回チェック
 checkServer();
 
-// 10秒ごとに自動更新
-setInterval(checkServer, 10000);
+// 3秒ごとに更新
+setInterval(checkServer, 3000);
 </script>
 
 </body>
