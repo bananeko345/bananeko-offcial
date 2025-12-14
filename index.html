@@ -63,7 +63,7 @@ const serverIP = "BANASABA.aternos.me";
 
 // サーバー状態を取得する関数
 function checkServer() {
-  fetch(`https://api.mcsrvstat.us/2/${serverIP}`)
+  fetch(`https://api.mcsrvstat.us/2/BANASABA.aternos.me:55396`)
     .then(response => response.json())
     .then(data => {
       if(data.online){
