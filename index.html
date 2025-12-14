@@ -19,6 +19,7 @@ body { margin:0; padding:0; font-family:Arial,sans-serif; color:white; overflow-
 .rule-btn:hover{background:#ffca4b;}
 .apply-btn{margin-top:20px;padding:12px 25px;background:#00bfff;border-radius:10px;font-size:20px;text-decoration:none;color:white;}
 .apply-btn:hover{background:#33cfff;}
+.status-box{margin-top:20px;font-size:22px;padding:10px 20px;background:rgba(0,0,0,0.5);border-radius:8px;}
 </style>
 </head>
 <body>
@@ -41,6 +42,7 @@ body { margin:0; padding:0; font-family:Arial,sans-serif; color:white; overflow-
   <h1 style="font-size:50px;">banasaba server</h1>
   <h2>毎日楽しくやろう。</h2>
   <button class="rule-btn" onclick="location.href='Rules.html'">ルールを見る</button>
+  <div class="status-box" id="status">サーバー状態を読み込み中...</div>
 </div>
 
 <div class="section section2" id="about">
@@ -53,6 +55,38 @@ body { margin:0; padding:0; font-family:Arial,sans-serif; color:white; overflow-
   <p>Moderator / Admin / Entertainment 募集！</p>
   <a href="https://docs.google.com/forms/d/1IFT1AQ25F0bJluCoKlDmIYY906AC18ea7mLn7ZZjDOQ/edit#responses" target="_blank" class="apply-btn">応募フォームはこちら</a>
 </div>
+
+<script>
+// Java版サーバーIP
+const statusDiv = document.getElementById('status');
+const serverIP = "BANASABA.aternos.me";
+
+// サーバー状態を取得する関数
+function checkServer() {
+  fetch(`https://api.mcsrvstat.us/2/${serverIP}`)
+    .then(response => response.json())
+    .then(data => {
+      if(data.online){
+        statusDiv.textContent = "サーバーはオンラインです ✅";
+        statusDiv.style.color = "lime";
+      } else {
+        statusDiv.textContent = "サーバーはオフラインです ❌";
+        statusDiv.style.color = "red";
+      }
+    })
+    .catch(err => {
+      statusDiv.textContent = "サーバー情報を取得できません";
+      statusDiv.style.color = "orange";
+      console.error(err);
+    });
+}
+
+// ページ読み込み時に最初のチェック
+checkServer();
+
+// 10秒ごとに自動更新
+setInterval(checkServer, 10000);
+</script>
 
 </body>
 </html>
