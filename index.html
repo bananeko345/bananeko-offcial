@@ -59,7 +59,7 @@ body {
   font-size: 18px;
 }
 
-/* ===== セクション ===== */
+/* ===== セクション共通 ===== */
 .section {
   height: 100vh;
   background-size: cover;
@@ -126,12 +126,39 @@ body {
   z-index: 5;
 }
 
-#server-status.online {
-  color: #00ff00;
+#server-status.online { color: #00ff00; }
+#server-status.offline { color: #ff4d4d; }
+
+/* ===== サーバー紹介（2ページ目専用） ===== */
+.about-box {
+  background: rgba(0,0,0,0.6);
+  padding: 40px;
+  border-radius: 20px;
+  max-width: 1100px;
+  width: 90%;
 }
 
-#server-status.offline {
-  color: #ff4d4d;
+.about-title {
+  font-size: 36px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.about-content {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.about-image img {
+  width: 420px;
+  max-width: 100%;
+  border-radius: 15px;
+}
+
+.about-text {
+  font-size: 18px;
+  line-height: 1.8;
 }
 </style>
 </head>
@@ -153,7 +180,7 @@ body {
   </div>
 </div>
 
-<!-- ===== トップ ===== -->
+<!-- ===== 1ページ目 ===== -->
 <div class="section section1">
   <div id="server-status">サーバー状態: 読み込み中...</div>
 
@@ -162,13 +189,36 @@ body {
   <button class="rule-btn" onclick="location.href='Rules.html'">ルールを見る</button>
 </div>
 
-<!-- ===== サーバー紹介 ===== -->
+<!-- ===== 2ページ目（サーバー紹介） ===== -->
 <div class="section section2" id="about">
-  <h1>サーバー紹介</h1>
-  <p>pvp鯖や、サバイバル鯖がある楽しめるサーバーです！</p>
+  <div class="about-box">
+    <div class="about-title">banasaba serverとは？</div>
+
+    <div class="about-content">
+      <!-- 左：画像 -->
+      <div class="about-image">
+        <img src="https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/image.png">
+      </div>
+
+      <!-- 右：説明文 -->
+      <div class="about-text">
+        banasaba Serverは、2025年11月にオープンしたクロスプレイ対応の
+        マインクラフトマルチプレイサーバーです。<br><br>
+
+        Java版・統合版のどちらのプレイヤーでも一緒に遊ぶことができ、
+        初心者から上級者まで楽しめる環境を目指して運営されています。<br><br>
+
+        サバイバル、PvP、イベント要素など、飽きずに遊べるコンテンツが用意されており、
+        友達同士でも、初参加の方でも気軽に参加できるのが特徴です。<br><br>
+
+        「毎日ログインしたくなるサーバー」を目標に、
+        運営・メンバー全員で楽しいワールドを作っています。
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- ===== 募集 ===== -->
+<!-- ===== 3ページ目 ===== -->
 <div class="section section3">
   <h1>メンバー募集</h1>
   <p>Moderator / Admin / Entertainment 募集！</p>
@@ -194,7 +244,6 @@ async function checkServer() {
         ? data.players.online
         : 0;
 
-    // ★ 人数が1人以上のときだけオンライン ★
     if (data.online === true && players > 0) {
       statusElement.textContent =
         `サーバー状態: オンライン（人数: ${players}）`;
@@ -205,8 +254,7 @@ async function checkServer() {
       statusElement.classList.remove("online");
       statusElement.classList.add("offline");
     }
-
-  } catch (e) {
+  } catch {
     statusElement.textContent = "サーバー状態: オフライン";
     statusElement.classList.remove("online");
     statusElement.classList.add("offline");
