@@ -48,9 +48,7 @@ body {
   font-weight: bold;
 }
 
-.discord-btn:hover {
-  background: #6d76ff;
-}
+.discord-btn:hover { background: #6d76ff; }
 
 .nav-links a {
   margin-left: 20px;
@@ -81,7 +79,8 @@ body {
 }
 
 .section3 {
-  background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");
+  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+  url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");
 }
 
 /* ===== ボタン ===== */
@@ -95,22 +94,22 @@ body {
   cursor: pointer;
 }
 
-.rule-btn:hover {
-  background: #ffca4b;
-}
+.rule-btn:hover { background: #ffca4b; }
 
 .apply-btn {
-  margin-top: 20px;
-  padding: 12px 25px;
-  background: #00bfff;
-  border-radius: 10px;
-  font-size: 20px;
+  margin-top: 30px;
+  padding: 15px 40px;
+  background: linear-gradient(45deg,#00bfff,#00ffcc);
+  border-radius: 50px;
+  font-size: 22px;
   text-decoration: none;
   color: white;
+  font-weight: bold;
+  box-shadow: 0 0 20px rgba(0,255,255,0.6);
 }
 
 .apply-btn:hover {
-  background: #33cfff;
+  box-shadow: 0 0 35px rgba(0,255,255,1);
 }
 
 /* ===== サーバー状態 ===== */
@@ -123,13 +122,12 @@ body {
   font-size: 20px;
   font-weight: bold;
   background: rgba(0,0,0,0.5);
-  z-index: 5;
 }
 
 #server-status.online { color: #00ff00; }
 #server-status.offline { color: #ff4d4d; }
 
-/* ===== サーバー紹介（2ページ目専用） ===== */
+/* ===== サーバー紹介 ===== */
 .about-box {
   background: rgba(0,0,0,0.6);
   padding: 40px;
@@ -152,7 +150,6 @@ body {
 
 .about-image img {
   width: 420px;
-  max-width: 100%;
   border-radius: 15px;
 }
 
@@ -160,12 +157,59 @@ body {
   font-size: 18px;
   line-height: 1.8;
 }
+
+/* ===== 募集ページ強化 ===== */
+.recruit-box {
+  background: rgba(0,0,0,0.7);
+  padding: 50px;
+  border-radius: 25px;
+  max-width: 1000px;
+  width: 90%;
+  text-align: center;
+}
+
+.recruit-title {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.recruit-sub {
+  font-size: 22px;
+  color: #00ffcc;
+  margin-bottom: 35px;
+}
+
+.roles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 25px;
+}
+
+.role {
+  background: rgba(255,255,255,0.08);
+  padding: 25px;
+  border-radius: 20px;
+}
+
+.role h3 {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+.role p {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.highlight {
+  margin-top: 30px;
+  font-size: 20px;
+  color: #ffd700;
+}
 </style>
 </head>
-
 <body>
 
-<!-- ===== ナビバー ===== -->
 <div class="navbar">
   <div class="nav-left">
     <div class="nav-title">banasaba server</div>
@@ -180,53 +224,53 @@ body {
   </div>
 </div>
 
-<!-- ===== 1ページ目 ===== -->
 <div class="section section1">
   <div id="server-status">サーバー状態: 読み込み中...</div>
-
   <h1 style="font-size:50px;">banasaba server</h1>
   <h2>毎日楽しくやろう。</h2>
   <button class="rule-btn" onclick="location.href='Rules.html'">ルールを見る</button>
 </div>
 
-<!-- ===== 2ページ目（サーバー紹介） ===== -->
 <div class="section section2" id="about">
   <div class="about-box">
     <div class="about-title">banasaba serverとは？</div>
-
     <div class="about-content">
-      <!-- 左：画像 -->
       <div class="about-image">
         <img src="https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/image.png">
       </div>
-
-      <!-- 右：説明文 -->
       <div class="about-text">
-        banasaba Serverは、2025年11月にオープンしたクロスプレイ対応の
-        マインクラフトマルチプレイサーバーです。<br><br>
-
-        Java版・統合版のどちらのプレイヤーでも一緒に遊ぶことができ、
-        初心者から上級者まで楽しめる環境を目指して運営されています。<br><br>
-
-        サバイバル、PvP、イベント要素など、飽きずに遊べるコンテンツが用意されており、
-        友達同士でも、初参加の方でも気軽に参加できるのが特徴です。<br><br>
-
-        「毎日ログインしたくなるサーバー」を目標に、
-        運営・メンバー全員で楽しいワールドを作っています。
+        banasaba Serverは、2025年11月にオープンしたクロスプレイ対応のマインクラフトマルチプレイサーバーです。<br><br>
+        Java版・統合版どちらでも参加可能。初心者から上級者まで楽しめます。<br><br>
+        サバイバル・PvP・イベントなど盛りだくさん！
       </div>
     </div>
   </div>
 </div>
 
-<!-- ===== 3ページ目 ===== -->
 <div class="section section3">
-  <h1>メンバー募集</h1>
-  <p>Moderator / Admin / Entertainment 募集！</p>
-  <a href="https://docs.google.com/forms/d/1IFT1AQ25F0bJluCoKlDmIYY906AC18ea7mLn7ZZjDOQ/edit#responses"
-     target="_blank"
-     class="apply-btn">
-     応募フォームはこちら
-  </a>
+  <div class="recruit-box">
+    <div class="recruit-title">🔥 運営メンバー大募集 🔥</div>
+    <div class="recruit-sub">一緒に最高のサーバーを作ろう！</div>
+
+    <div class="roles">
+      <div class="role">
+        <h3>👑 Admin</h3>
+        <p>サーバー全体の管理・方針決定を行います。</p>
+      </div>
+      <div class="role">
+        <h3>🛡 Moderator</h3>
+        <p>治安維持・プレイヤー対応を担当。</p>
+      </div>
+      <div class="role">
+        <h3>🎉 Entertainment</h3>
+        <p>イベント企画・盛り上げ役！</p>
+      </div>
+    </div>
+
+    <div class="highlight">💡 初心者OK / やる気重視 / 年齢不問</div>
+
+    <a href="https://docs.google.com/forms/d/1IFT1AQ25F0bJluCoKlDmIYY906AC18ea7mLn7ZZjDOQ/edit#responses" target="_blank" class="apply-btn">今すぐ応募する</a>
+  </div>
 </div>
 
 <script>
@@ -238,26 +282,18 @@ async function checkServer() {
   try {
     const res = await fetch(`https://api.mcsrvstat.us/2/${serverIP}:${serverPort}`);
     const data = await res.json();
+    const players = data.players?.online ?? 0;
 
-    const players =
-      data.players && typeof data.players.online === "number"
-        ? data.players.online
-        : 0;
-
-    if (data.online === true && players > 0) {
-      statusElement.textContent =
-        `サーバー状態: オンライン（人数: ${players}）`;
-      statusElement.classList.remove("offline");
-      statusElement.classList.add("online");
+    if (data.online && players > 0) {
+      statusElement.textContent = `サーバー状態: オンライン（人数: ${players}）`;
+      statusElement.className = "online";
     } else {
       statusElement.textContent = "サーバー状態: オフライン";
-      statusElement.classList.remove("online");
-      statusElement.classList.add("offline");
+      statusElement.className = "offline";
     }
   } catch {
     statusElement.textContent = "サーバー状態: オフライン";
-    statusElement.classList.remove("online");
-    statusElement.classList.add("offline");
+    statusElement.className = "offline";
   }
 }
 
