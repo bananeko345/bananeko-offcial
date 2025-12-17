@@ -1,42 +1,144 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
 <title>banasaba server</title>
+
 <style>
-body { margin:0; padding:0; font-family:Arial,sans-serif; color:white; overflow-x:hidden; }
-.navbar{width:100%;padding:15px 25px;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,0.6);position:fixed;top:0;left:0;z-index:10;}
-.nav-left{display:flex;align-items:center;gap:15px;}
-.nav-title{font-size:25px;font-weight:bold;}
-.discord-btn{padding:8px 15px;background:#5865F2;border-radius:8px;color:white;font-size:16px;text-decoration:none;font-weight:bold;}
-.discord-btn:hover{background:#6d76ff;}
-.nav-links a{margin-left:20px;color:white;text-decoration:none;font-size:18px;}
-.section{height:100vh;background-size:cover;background-position:center;display:flex;justify-content:center;align-items:center;flex-direction:column;text-shadow:0 0 5px black;position:relative;}
-.section1{background-image:url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/20251211-1825_351cdaa0c682ed5b47b5ee0c7d1a8be1.png");}
-.section2{background-image:url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png");}
-.section3{background-image:url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");}
-.rule-btn{margin-top:20px;padding:12px 25px;background:orange;border:none;border-radius:10px;font-size:20px;cursor:pointer;}
-.rule-btn:hover{background:#ffca4b;}
-.apply-btn{margin-top:20px;padding:12px 25px;background:#00bfff;border-radius:10px;font-size:20px;text-decoration:none;color:white;}
-.apply-btn:hover{background:#33cfff;}
-#server-status { 
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    padding:10px 15px;
-    border-radius:10px;
-    font-size:20px;
-    font-weight:bold;
-    background: rgba(0,0,0,0.5);
-    z-index:5;
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  color: white;
+  overflow-x: hidden;
 }
-#server-status.online { color: #00ff00; }
-#server-status.offline { color: #ff4d4d; }
-#server-note { margin-left:15px; color:#ff4d4d; font-size:16px; }
+
+/* ===== ナビバー ===== */
+.navbar {
+  width: 100%;
+  padding: 15px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.nav-title {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.discord-btn {
+  padding: 8px 15px;
+  background: #5865F2;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.discord-btn:hover {
+  background: #6d76ff;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+/* ===== セクション ===== */
+.section {
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-shadow: 0 0 5px black;
+  position: relative;
+}
+
+.section1 {
+  background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/20251211-1825_351cdaa0c682ed5b47b5ee0c7d1a8be1.png");
+}
+
+.section2 {
+  background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png");
+}
+
+.section3 {
+  background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");
+}
+
+/* ===== ボタン ===== */
+.rule-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: orange;
+  border: none;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.rule-btn:hover {
+  background: #ffca4b;
+}
+
+.apply-btn {
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: #00bfff;
+  border-radius: 10px;
+  font-size: 20px;
+  text-decoration: none;
+  color: white;
+}
+
+.apply-btn:hover {
+  background: #33cfff;
+}
+
+/* ===== サーバー状態 ===== */
+#server-status {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  background: rgba(0,0,0,0.5);
+  z-index: 5;
+}
+
+#server-status.online {
+  color: #00ff00;
+}
+
+#server-status.offline {
+  color: #ff4d4d;
+}
 </style>
 </head>
+
 <body>
 
+<!-- ===== ナビバー ===== -->
 <div class="navbar">
   <div class="nav-left">
     <div class="nav-title">banasaba server</div>
@@ -51,27 +153,30 @@ body { margin:0; padding:0; font-family:Arial,sans-serif; color:white; overflow-
   </div>
 </div>
 
+<!-- ===== トップ ===== -->
 <div class="section section1">
-  <!-- サーバー状態表示（左下） -->
-  <div id="server-status">
-    サーバー状態: 読み込み中...
-    <span id="server-note">※オフラインはオンラインで、オンラインはオフラインになってます</span>
-  </div>
+  <div id="server-status">サーバー状態: 読み込み中...</div>
 
   <h1 style="font-size:50px;">banasaba server</h1>
   <h2>毎日楽しくやろう。</h2>
   <button class="rule-btn" onclick="location.href='Rules.html'">ルールを見る</button>
 </div>
 
+<!-- ===== サーバー紹介 ===== -->
 <div class="section section2" id="about">
   <h1>サーバー紹介</h1>
   <p>pvp鯖や、サバイバル鯖がある楽しめるサーバーです！</p>
 </div>
 
+<!-- ===== 募集 ===== -->
 <div class="section section3">
   <h1>メンバー募集</h1>
   <p>Moderator / Admin / Entertainment 募集！</p>
-  <a href="https://docs.google.com/forms/d/1IFT1AQ25F0bJluCoKlDmIYY906AC18ea7mLn7ZZjDOQ/edit#responses" target="_blank" class="apply-btn">応募フォームはこちら</a>
+  <a href="https://docs.google.com/forms/d/1IFT1AQ25F0bJluCoKlDmIYY906AC18ea7mLn7ZZjDOQ/edit#responses"
+     target="_blank"
+     class="apply-btn">
+     応募フォームはこちら
+  </a>
 </div>
 
 <script>
@@ -80,32 +185,33 @@ const serverPort = "55396";
 const statusElement = document.getElementById("server-status");
 
 async function checkServer() {
-    try {
-        const response = await fetch(`https://api.mcsrvstat.us/2/${serverIP}:${serverPort}`);
-        const data = await response.json();
+  try {
+    const res = await fetch(`https://api.mcsrvstat.us/2/${serverIP}:${serverPort}`);
+    const data = await res.json();
 
-        if(data.online === true){
-            const onlinePlayers = data.players && typeof data.players.online === 'number' ? data.players.online : 0;
-            statusElement.innerHTML = `サーバー状態: オンライン（人数: ${onlinePlayers}）<span id="server-note">※オフラインはオンラインで、オンラインはオフラインになってます</span>`;
-            statusElement.classList.remove("offline");
-            statusElement.classList.add("online");
-        } else {
-            statusElement.innerHTML = `サーバー状態: オフライン<span id="server-note">※オフラインはオンラインで、オンラインはオフラインになってます</span>`;
-            statusElement.classList.remove("online");
-            statusElement.classList.add("offline");
-        }
-    } catch (error) {
-        console.error("サーバー状態取得エラー:", error);
-        statusElement.innerHTML = `サーバー状態: オフライン<span id="server-note">※オフラインはオンラインで、オンラインはオフラインになってます</span>`;
-        statusElement.classList.remove("online");
-        statusElement.classList.add("offline");
+    if (data.online === true) {
+      const players =
+        data.players && typeof data.players.online === "number"
+          ? data.players.online
+          : 0;
+
+      statusElement.textContent =
+        `サーバー状態: オンライン（人数: ${players}）`;
+      statusElement.classList.remove("offline");
+      statusElement.classList.add("online");
+    } else {
+      statusElement.textContent = "サーバー状態: オフライン";
+      statusElement.classList.remove("online");
+      statusElement.classList.add("offline");
     }
+  } catch (e) {
+    statusElement.textContent = "サーバー状態: オフライン";
+    statusElement.classList.remove("online");
+    statusElement.classList.add("offline");
+  }
 }
 
-// 初回チェック
 checkServer();
-
-// 3秒ごとに更新
 setInterval(checkServer, 3000);
 </script>
 
