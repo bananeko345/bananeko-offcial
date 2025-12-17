@@ -189,12 +189,13 @@ async function checkServer() {
     const res = await fetch(`https://api.mcsrvstat.us/2/${serverIP}:${serverPort}`);
     const data = await res.json();
 
-    if (data.online === true) {
-      const players =
-        data.players && typeof data.players.online === "number"
-          ? data.players.online
-          : 0;
+    const players =
+      data.players && typeof data.players.online === "number"
+        ? data.players.online
+        : 0;
 
+    // ★ 人数が1人以上のときだけオンライン ★
+    if (data.online === true && players > 0) {
       statusElement.textContent =
         `サーバー状態: オンライン（人数: ${players}）`;
       statusElement.classList.remove("offline");
@@ -204,6 +205,7 @@ async function checkServer() {
       statusElement.classList.remove("online");
       statusElement.classList.add("offline");
     }
+
   } catch (e) {
     statusElement.textContent = "サーバー状態: オフライン";
     statusElement.classList.remove("online");
