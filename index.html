@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>banasaba server</title>
 
-<!-- ★ ここが追加した部分（Chromeタブのアイコン） -->
 <link rel="icon" href="favicon.ico">
 <link rel="shortcut icon" href="favicon.ico">
 
@@ -27,7 +26,6 @@ body {
   background: rgba(0,0,0,0.6);
   position: fixed;
   top: 0;
-  left: 0;
   z-index: 10;
 }
 
@@ -47,21 +45,17 @@ body {
   background: #5865F2;
   border-radius: 8px;
   color: white;
-  font-size: 16px;
   text-decoration: none;
   font-weight: bold;
 }
-
-.discord-btn:hover { background: #6d76ff; }
 
 .nav-links a {
   margin-left: 20px;
   color: white;
   text-decoration: none;
-  font-size: 18px;
 }
 
-/* ===== セクション共通 ===== */
+/* ===== セクション ===== */
 .section {
   height: 100vh;
   background-size: cover;
@@ -74,31 +68,57 @@ body {
   position: relative;
 }
 
+/* 背景 */
 .section1 {
   background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/20251211-1825_351cdaa0c682ed5b47b5ee0c7d1a8be1.png");
 }
-
 .section2 {
   background-image: url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_191139.png");
 }
-
 .section3 {
-  background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+  background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
   url("https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/2025-12-11_190934.png");
+}
+
+/* ===== アニメーション ===== */
+.fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slide-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: all 1s ease;
+}
+
+.slide-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: all 1s ease;
+}
+
+.slide-left.show,
+.slide-right.show {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* ===== ボタン ===== */
 .rule-btn {
-  margin-top: 20px;
   padding: 12px 25px;
   background: orange;
-  border: none;
   border-radius: 10px;
   font-size: 20px;
+  border: none;
   cursor: pointer;
 }
-
-.rule-btn:hover { background: #ffca4b; }
 
 .apply-btn {
   margin-top: 30px;
@@ -106,14 +126,9 @@ body {
   background: linear-gradient(45deg,#00bfff,#00ffcc);
   border-radius: 50px;
   font-size: 22px;
-  text-decoration: none;
   color: white;
-  font-weight: bold;
+  text-decoration: none;
   box-shadow: 0 0 20px rgba(0,255,255,0.6);
-}
-
-.apply-btn:hover {
-  box-shadow: 0 0 35px rgba(0,255,255,1);
 }
 
 /* ===== サーバー状態 ===== */
@@ -122,28 +137,17 @@ body {
   bottom: 20px;
   left: 20px;
   padding: 10px 15px;
-  border-radius: 10px;
-  font-size: 20px;
-  font-weight: bold;
   background: rgba(0,0,0,0.5);
+  border-radius: 10px;
+  font-size: 18px;
 }
 
-#server-status.online { color: #00ff00; }
-#server-status.offline { color: #ff4d4d; }
-
-/* ===== サーバー紹介 ===== */
+/* ===== 紹介 ===== */
 .about-box {
   background: rgba(0,0,0,0.6);
   padding: 40px;
   border-radius: 20px;
   max-width: 1100px;
-  width: 90%;
-}
-
-.about-title {
-  font-size: 36px;
-  margin-bottom: 25px;
-  text-align: center;
 }
 
 .about-content {
@@ -157,158 +161,106 @@ body {
   border-radius: 15px;
 }
 
-.about-text {
-  font-size: 18px;
-  line-height: 1.8;
-}
-
-/* ===== 募集ページ強化 ===== */
+/* ===== 募集 ===== */
 .recruit-box {
   background: rgba(0,0,0,0.7);
   padding: 50px;
   border-radius: 25px;
   max-width: 1000px;
-  width: 90%;
   text-align: center;
 }
 
-.recruit-title {
-  font-size: 50px;
-  margin-bottom: 15px;
-}
-
-.recruit-sub {
-  font-size: 22px;
-  color: #00ffcc;
-  margin-bottom: 35px;
-}
-
-.roles {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 25px;
-}
-
-.role {
-  background: rgba(255,255,255,0.08);
-  padding: 25px;
-  border-radius: 20px;
-}
-
-.role h3 {
-  font-size: 26px;
-  margin-bottom: 10px;
-}
-
-.role p {
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-.highlight {
-  margin-top: 30px;
-  font-size: 20px;
-  color: #ffd700;
+.footer {
+  background: black;
+  text-align: center;
+  padding: 15px;
 }
 </style>
 </head>
+
 <body>
 
 <div class="navbar">
   <div class="nav-left">
     <div class="nav-title">banasaba server</div>
-    <a href="https://discord.gg/Mz8vqjchQs" target="_blank" class="discord-btn">Discordに参加</a>
+    <a href="https://discord.gg/Mz8vqjchQs" class="discord-btn">Discord</a>
   </div>
   <div class="nav-links">
     <a href="index.html">ホーム</a>
     <a href="Rules.html">ルール</a>
-    <a href="#about">サーバー紹介</a>
-    <a href="mailto:bananeko345@gmail.com">お問い合わせ</a>
-    <a href="ip.html">サーバーIP</a>
+    <a href="#about">紹介</a>
+    <a href="ip.html">IP</a>
   </div>
 </div>
 
+<!-- ===== HERO ===== -->
 <div class="section section1">
   <div id="server-status">サーバー状態: 読み込み中...</div>
-  <h1 style="font-size:50px;">banasaba server</h1>
-  <h2>毎日楽しくやろう。</h2>
-  <button class="rule-btn" onclick="location.href='Rules.html'">ルールを見る</button>
+  <h1 class="fade">banasaba server</h1>
+  <h2 class="fade">毎日楽しくやろう。</h2>
+  <button class="rule-btn fade" onclick="location.href='Rules.html'">ルールを見る</button>
 </div>
 
+<!-- ===== ABOUT ===== -->
 <div class="section section2" id="about">
-  <div class="about-box">
-    <div class="about-title">banasaba serverとは？</div>
+  <div class="about-box fade">
+    <h2>banasaba serverとは？</h2>
     <div class="about-content">
-      <div class="about-image">
+      <div class="about-image slide-left">
         <img src="https://raw.githubusercontent.com/bananeko345/bananeko-offcial/refs/heads/main/image.png">
       </div>
-      <div class="about-text">
-        banasaba Serverは、2025年11月にオープンしたクロスプレイ対応のマインクラフトマルチプレイサーバーです。<br><br>
-        Java版・統合版どちらでも参加可能。初心者から上級者まで楽しめます。<br><br>
-        サバイバル・PvP・イベントなど盛りだくさん！
+      <div class="slide-right">
+        クロスプレイ対応のマインクラフトサーバー！<br>
+        初心者〜上級者まで大歓迎！
       </div>
     </div>
   </div>
 </div>
 
+<!-- ===== RECRUIT ===== -->
 <div class="section section3">
-  <div class="recruit-box">
-    <div class="recruit-title">🔥 運営メンバー大募集 🔥</div>
-    <div class="recruit-sub">一緒に最高のサーバーを作ろう！</div>
-
-    <div class="roles">
-      <div class="role">
-        <h3>👑 Admin</h3>
-        <p>サーバー全体の管理・方針決定を行います。</p>
-      </div>
-      <div class="role">
-        <h3>🛡 Moderator</h3>
-        <p>治安維持・プレイヤー対応を担当。</p>
-      </div>
-      <div class="role">
-        <h3>🎉 Entertainment</h3>
-        <p>イベント企画・盛り上げ役！</p>
-      </div>
-    </div>
-
-    <div class="highlight">💡 初心者OK / やる気重視 / 年齢不問</div>
-
-    <a href="https://docs.google.com/forms/d/1IFT1AQ25F0bJluCoKlDmIYY906AC18ea7mLn7ZZjDOQ/edit#responses" target="_blank" class="apply-btn">今すぐ応募する</a>
+  <div class="recruit-box fade">
+    <h2>🔥 運営メンバー募集 🔥</h2>
+    <p>初心者OK / やる気重視</p>
+    <a href="https://docs.google.com/forms/" class="apply-btn">応募する</a>
   </div>
 </div>
+
+<footer class="footer">
+  Copyright © bananeko Server All Rights Reserved.
+</footer>
 
 <script>
-const serverIP = "BANASABA.aternos.me";
-const serverPort = "55396";
-const statusElement = document.getElementById("server-status");
+/* スクロールアニメーション */
+const targets = document.querySelectorAll('.fade, .slide-left, .slide-right');
 
-async function checkServer() {
-  try {
-    const res = await fetch(`https://api.mcsrvstat.us/2/${serverIP}:${serverPort}`);
-    const data = await res.json();
-    const players = data.players?.online ?? 0;
-
-    if (data.online && players > 0) {
-      statusElement.textContent = `サーバー状態: オンライン（人数: ${players}）`;
-      statusElement.className = "online";
-    } else {
-      statusElement.textContent = "サーバー状態: オフライン";
-      statusElement.className = "offline";
+function check() {
+  const trigger = window.innerHeight * 0.85;
+  targets.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if (top < trigger) {
+      el.classList.add('show');
     }
-  } catch {
-    statusElement.textContent = "サーバー状態: オフライン";
-    statusElement.className = "offline";
-  }
+  });
 }
 
-checkServer();
-setInterval(checkServer, 3000);
-</script>
+window.addEventListener('scroll', check);
+check();
 
-<!-- ===== フッター ===== -->
-<footer class="footer">
-  <p>Copyright © bananeko Server All Rights Reserved.</p>
-</footer>
+/* サーバー状態 */
+async function checkServer() {
+  const status = document.getElementById("server-status");
+  try {
+    const res = await fetch("https://api.mcsrvstat.us/2/BANASABA.aternos.me:55396");
+    const data = await res.json();
+    status.textContent = data.online ? "サーバー状態: オンライン" : "サーバー状態: オフライン";
+  } catch {
+    status.textContent = "サーバー状態: オフライン";
+  }
+}
+checkServer();
+setInterval(checkServer,3000);
+</script>
 
 </body>
 </html>
